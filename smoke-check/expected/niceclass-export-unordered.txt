@@ -1,0 +1,15 @@
+status: 200
+content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+row: No | Class Number | Term (Lt) | Basic Number | Term (En)
+row: 1.0 | 5.0 | Audiniai (Chirurginiai -) | 050078 | Tissues (Surgical -)
+row: 2.0 | 10.0 | Chirurginiai aparatai ir instrumentai | 100054 | Surgical apparatus and instruments
+row: 3.0 | 5.0 | Chirurginiai audiniai | 050078 | Surgical tissues
+row: 4.0 | 10.0 | Chirurginiai drabužiai | 100207 | Surgical drapes
+row: 5.0 | 10.0 | Chirurginiai implantantai (dirbtinės medžiagos) | 100208 | Surgical implants [artificial materials]
+row: 6.0 | 5.0 | Chirurginiai implantuojamieji audiniai (gyvybingi) | 050400 | Textiles (Deodorants for clothing and -)
+row: 7.0 | 5.0 | Chirurginiai implantuojamieji audiniai (gyvybingi) | 050397 | Surgical implants [living tissues]
+row: 8.0 | 5.0 | Chirurginiai skalbiniai (audiniai)  | 050078 | Surgical cloth [tissues]
+row: 9.0 | 5.0 | Implantuojamieji audiniai (gyvybingi) (Chirurginiai -) | 050397 | Implants (Surgical -) [living tissues]
+row: 10.0 | 10.0 | Kompresai (chirurginiai) | 100060 | Compressors [surgical]
+row: 11.0 | 10.0 | Troakarai (chirurginiai instrumentai) | 100151 | Trocars
+row: 12.0 | 10.0 | įrankiai (Pjaunamieji -) (chirurginiai) | 100065 | Cutlery [surgical]

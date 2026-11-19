@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{patent.details.windowtitle}"/>
+
+    <link rel="stylesheet" th:href="@{/patent-licences-list.css}">
+
+    <script th:src="@{/js/utilities.js}"></script>
+
+</head>
+<body>
+
+    <div class="turinys">
+
+        <div style="float: right; font-size: 10px; padding: 3px; background-color: #fafad2;">
+            <a href="javascript:print()">
+                <img th:src="@{/images/print.png}" th:alt="#{common.print}">
+            </a>
+        </div>
+        <div style="float: right; margin-right: 10px; font-size: 15px">
+            <a th:href="@{''(lang='en')}">EN</a>
+            <span > | </span>
+            <a th:href="@{''(lang='lt')}">LT</a>
+        </div>
+
+        <h1 th:text="#{patent.licence.details.title}"/>
+
+        <div style="margin-bottom: 6px">
+            <strong>(11)</strong>
+            <strong style="color: #708090;" th:text="#{patent.licence.details.patent-number}"/> - <strong th:text="${dossier.patentNumber}"/>
+        </div>
+        <div>
+            <strong>(21)</strong>
+            <strong style="color: #708090;" th:text="#{patent.licence.details.application-number}"/> - <strong th:text="${dossier.applicationNumber}"/>
+        </div>
+        <div>&nbsp;</div>
+        <hr>
+        <div>&nbsp;</div>
+        <div style="margin-bottom: 6px">
+            <strong style="color: #708090;">LT</strong> - <strong th:text="${dossier.titleLt}"/>
+        </div>
+        <div>
+            <strong style="color: #708090;">EN</strong> - <strong th:text="${dossier.titleEn}"/>
+        </div>
+
+        <ol>
+            <li th:each="licence: ${dossier.licences}">
+                <!-- Licenciatai / Sublicenciatai -->
+                <th:block th:if="${licence.licenciates.size() > 0}">
+                    <th:block th:if="${licence.kind == 6 or licence.kind == 7}">
+                        <span th:text="#{patent.licence.details.sublicenciate}"></span>:
+                    </th:block>
+                    <th:block th:unless="${licence.kind == 6 or licence.kind == 7}">
+                        <span th:text="#{patent.licence.details.licenciate}"></span>:
+                    </th:block>
+
+                    <th:block th:each="person : ${licence.licenciates}">
+                        <span th:text="${person.freeformName}"></span>,
+                        <span th:text="${person.freeformAddress}"></span>,
+                        <span th:text="${person.country}"></span>
+                        <span th:if="${person.sanctionsApplied}" style="color: red"
+                              th:text="#{person.sanctioned}"></span><br/>
+                    </th:block>
+                </th:block>
+
+                <!-- Licencijos / Sublicencijos rūšis -->
+                <th:block th:if="${licence.kind == 6 or licence.kind == 7}">
+                    <span th:text="#{patent.licence.details.sublicence-type}"></span>:
+                </th:block>
+                <th:block th:unless="${licence.kind == 6 or licence.kind == 7}">
+                    <span th:text="#{patent.licence.details.licence-type}"></span>:
+                </th:block>
+                <strong th:text="#{'patent.licence.details.kind.' + ${licence.kind}}"></strong><br/>
+
+                <!-- Galiojimo pabaiga -->
+                <th:block th:if="${licence.kind == 6 or licence.kind == 7}">
+                    <span th:text="#{patent.licence.details.expiry-date-sub}"></span>:
+                </th:block>
+                <th:block th:unless="${licence.kind == 6 or licence.kind == 7}">
+                    <span th:text="#{patent.licence.details.expiry-date}"></span>:
+                </th:block>
+
+                <strong th:if="${licence.expiryDate != null}"
+                        th:text="${#temporals.format(licence.expiryDate, dateFormat)}"></strong>
+                <strong th:if="${licence.expiryDate == null and (licence.kind == 6 or licence.kind == 7)}"
+                        th:text="#{patent.licence.details.indefinite-sub}"></strong>
+                <strong th:if="${licence.expiryDate == null and !(licence.kind == 6 or licence.kind == 7)}"
+                        th:text="#{patent.licence.details.indefinite}"></strong>
+                <br/>
+
+                <!-- Sutarties įrašymo data -->
+                <span th:text="#{patent.licence.details.agreement-date}"></span>:
+                <strong th:if="${licence.agreementRecordDate != null}"
+                        th:text="${#temporals.format(licence.agreementRecordDate, dateFormat)}"></strong>
+        </ol>
+    </div>
+</body>
+</html>

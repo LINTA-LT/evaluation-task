@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="dropdown(selectId, selectName, selectedValue, options, allLabelKey, divClass)"
+     th:class="${divClass}">
+    <select th:id="${selectId}" th:name="${selectName}" class="form-control">
+        <option value=""
+                th:selected="${selectedValue == null or selectedValue == ''}"
+                th:text="#{${allLabelKey}}">
+        </option>
+        <option th:each="option : ${options}"
+                th:value="${option.value}"
+                th:selected="${selectedValue == option.value}"
+                th:text="${option.label} != null ? #{${option.label}} : '-'">
+        </option>
+    </select>
+</div>
+</body>
+</html>

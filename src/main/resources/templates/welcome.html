@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{welcomepage.windowtitle}"/>
+
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{/screen.css}"/>
+
+</head>
+<body class="container-fluid">
+
+    <div class="row mb2">
+        <div class="col-md-7 col-sm-12">
+            <a class="invisible" th:href="@{/}">
+                <img th:src="@{/images/home-button-icon-6.png}" width="24px" height="24px" th:alt="#{common.homepage}">
+            </a>
+            <a th:href="@{/(lang='en')}">EN</a> | <a th:href="@{/(lang='lt')}">LT</a>
+        </div>
+    </div>
+
+    <div class="content_view">
+        <div class="inner_wrap">
+            <div class="row">
+                <div class="col-xs-6 col-sm-4 link_block">
+                    <a class="clearfix" th:href="@{/trademark/search-form}" style="height: 95px;">
+                        <div class="desc">
+                            <h4 th:text="#{welcomepage.trademarks.search}"/>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-4 link_block">
+                    <a class="clearfix" th:href="@{/design/search-form}" style="height: 95px;">
+                        <div class="desc">
+                            <h4 th:text="#{welcomepage.designs.search}"/>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-4 link_block">
+                    <a class="clearfix" th:href="@{/dispute/opposition/search-form}" style="height: 95px;">
+                        <div class="desc">
+                            <h4 th:text="#{welcomepage.oppositions.search}"/>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-4 link_block">
+                    <a class="clearfix" th:href="@{/dispute/appeal/search-form}" style="height: 95px;">
+                        <div class="desc">
+                            <h4 th:text="#{welcomepage.appeals.search}"/>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-4 link_block">
+                    <a class="clearfix" th:href="@{/dispute/invalidation/search-form}" style="height: 95px;">
+                        <div class="desc">
+                            <h4 th:text="#{welcomepage.invalidations.search}"/>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-4 link_block">
+                    <a class="clearfix" th:href="@{/dispute/cancellation/search-form}" style="height: 95px;">
+                        <div class="desc">
+                            <h4 th:text="#{welcomepage.cancellations.search}"/>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-4 link_block">
+                    <a class="clearfix" th:href="@{/niceclass/search-form}" style="height: 95px;">
+                        <div class="desc">
+                            <h4 th:text="#{welcomepage.niceclass.search}"/>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-4 link_block">
+                    <a class="clearfix" th:href="@{/patent/lt/search-form}" style="height: 95px;">
+                        <div class="desc">
+                            <h4 th:text="#{welcomepage.patents.lt.search}"/>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-4 link_block">
+                    <a class="clearfix" th:href="@{/patent/eu/search-form}" style="height: 95px;">
+                        <div class="desc">
+                            <h4 th:text="#{welcomepage.patents.eu.search}"/>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-4 link_block">
+                    <a class="clearfix" th:href="@{/opendata/trademark/list}" style="height: 95px;">
+                        <div class="desc">
+                            <h4 th:text="#{welcomepage.opendata.tm.main}"/>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-4 link_block">
+                    <a class="clearfix" th:href="@{/opendata/design/list}" style="height: 95px;">
+                        <div class="desc">
+                            <h4 th:text="#{welcomepage.opendata.ds.main}"/>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

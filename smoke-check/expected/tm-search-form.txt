@@ -1,0 +1,86 @@
+status: 200
+content-type: text/html
+link: /pdb/
+link: ?lang=en
+link: ?lang=lt
+link: javascript: openHelpWindow(&#39;/pdb/tm-help.html#540&#39;);
+link: javascript: openHelpWindow(&#39;/pdb/tm-help.html#210&#39;);
+link: javascript: openHelpWindow(&#39;/pdb/tm-help.html#111&#39;);
+text: Trademark database
+text: EN
+text: |
+text: LT
+text: Updated
+text: :
+text: 2026-11-09
+text: Trademark database
+text: (540)
+text: Trade mark:
+text: Is
+text: Contains
+text: Starts with
+text: Ends with
+text: Mark type:
+text: Is
+text: All
+text: Word
+text: Figurative
+text: Colour
+text: 3-D
+text: Sound
+text: Other
+text: Hologram
+text: Motion
+text: Multimedia
+text: Positioning
+text: Pattern
+text: Mark kind:
+text: Is
+text: All
+text: Individual
+text: Collective
+text: Certification
+text: Mark status:
+text: Is
+text: All
+text: Application filed
+text: Under examination
+text: Examination Not OK
+text: Examination OK
+text: Appeal pending
+text: Examination OK (Application published)
+text: Withdrawn
+text: Negative decision 1
+text: Negative decision 2
+text: Registered
+text: Opposition pending
+text: Expired with possibility to be restored
+text: Cancelled
+text: Ended
+text: Application refused
+text: Ended
+text: Replaced by international registration
+text: Invalidation pending
+text: Revocation pending
+text: Partial negative decision
+text: (210)
+text: Application number:
+text: Is
+text: Contains
+text: Starts with
+text: Ends with
+text: (111)
+text: Registration number:
+text: Is
+text: Contains
+text: Starts with
+text: Ends with
+text: (220)
+text: Date of filing the application:
+text: From
+text: To
+text: (181)
+text: Expiration date:
+text: From
+text: To
+text: Advanced search

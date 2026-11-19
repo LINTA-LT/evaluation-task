@@ -1,0 +1,30 @@
+status: 200
+content-type: text/html
+link: /pdb/
+link: /pdb/patent/eu/search?lang=en
+link: /pdb/patent/eu/search?lang=lt
+link: /pdb/patent/eu/search-form
+link: /pdb/patent/export/xlsx/eu?lang=en
+text: European patent database
+text: EN
+text: |
+text: LT
+text: European patent database
+text: New search
+text: Search results
+text: (
+text: Found
+text: :
+text: 0
+text: )
+text: Updated
+text: :
+text: 2026-11-10
+text: Print
+text: Export to MS Excel
+text: No.
+text: European patent application number
+text: Number of the document
+text: Title
+text: Owner
+text: Legal status

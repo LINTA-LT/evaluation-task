@@ -1,0 +1,87 @@
+status: 200
+content-type: text/html
+link: /pdb/
+link: /pdb/niceclass/search?class_term_lt=chirurginiai&amp;class_term_lt_mc=has&amp;version_year=2012&amp;lang=en
+link: /pdb/niceclass/search?class_term_lt=chirurginiai&amp;class_term_lt_mc=has&amp;version_year=2012&amp;lang=lt
+link: /pdb/niceclass/search-form
+link: /pdb/niceclass/export/xlsx?class_term_lt=chirurginiai&amp;class_term_lt_mc=has&amp;version_year=2012&amp;lang=en
+text: The International (Nice) Classification of Goods and Services
+text: EN
+text: |
+text: LT
+text: The International (Nice) Classification of Goods and Services
+text: (version of the year 2012)
+text: New search
+text: Search results
+text: (
+text: Found
+text: :
+text: 12
+text: )
+text: Print
+text: Export to MS Excel
+text: No
+text: Class Number
+text: Term (Lt)
+text: Basic Number
+text: Term (En)
+text: 1.
+text: 5
+text: Audiniai (Chirurginiai -)
+text: 050078
+text: Tissues (Surgical -)
+text: 2.
+text: 10
+text: Chirurginiai aparatai ir instrumentai
+text: 100054
+text: Surgical apparatus and instruments
+text: 3.
+text: 5
+text: Chirurginiai audiniai
+text: 050078
+text: Surgical tissues
+text: 4.
+text: 10
+text: Chirurginiai drabužiai
+text: 100207
+text: Surgical drapes
+text: 5.
+text: 10
+text: Chirurginiai implantantai (dirbtinės medžiagos)
+text: 100208
+text: Surgical implants [artificial materials]
+text: 6.
+text: 5
+text: Chirurginiai implantuojamieji audiniai (gyvybingi)
+text: 050400
+text: Textiles (Deodorants for clothing and -)
+text: 7.
+text: 5
+text: Chirurginiai implantuojamieji audiniai (gyvybingi)
+text: 050397
+text: Surgical implants [living tissues]
+text: 8.
+text: 5
+text: Chirurginiai skalbiniai (audiniai)
+text: 050078
+text: Surgical cloth [tissues]
+text: 9.
+text: 5
+text: Implantuojamieji audiniai (gyvybingi) (Chirurginiai -)
+text: 050397
+text: Implants (Surgical -) [living tissues]
+text: 10.
+text: 10
+text: Kompresai (chirurginiai)
+text: 100060
+text: Compressors [surgical]
+text: 11.
+text: 10
+text: Troakarai (chirurginiai instrumentai)
+text: 100151
+text: Trocars
+text: 12.
+text: 10
+text: įrankiai (Pjaunamieji -) (chirurginiai)
+text: 100065
+text: Cutlery [surgical]

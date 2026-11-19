@@ -1,0 +1,39 @@
+th {
+	background-color : #778899;
+	border-top : 1px solid #483d8b;
+	color : #ffffff;
+	font-size : 11px;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	padding : 2px;
+}
+
+td {
+	color : #232323;
+	font-size : 10px;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	vertical-align : top;
+}
+
+strong {
+	color : #000000;
+}
+
+td a {
+	color : #006699;
+	font-size : 11px;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	vertical-align : top;
+	font-weight : bold;
+	text-decoration: none;
+}
+
+span.print.print-details{
+	margin-left: 45px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+span.print.print-details:hover{
+	cursor: pointer;
+	color: #888;
+}

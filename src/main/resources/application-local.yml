@@ -1,0 +1,73 @@
+elasticsearch:
+  host: localhost
+  port: 9300
+  cluster-name: elasticsearch
+
+tmdsview:
+  image-ws-endpoint:
+    tm: https://search.linta.lt/pdb/trademark/{resource}/{applicationNumber}
+    ds: https://search.linta.lt/pdb/design/{resource}/{st13}
+
+logging:
+  file:
+    name: ./pdb.log
+  level:
+    root: INFO
+
+im4java:
+  toolpath: /opt/homebrew/Cellar/imagemagick/7.1.1-26/bin
+  useGM: false
+
+patent:
+  images-dir: ./data/images/patents
+
+pdb:
+  jdbc:
+    url: jdbc:mysql://localhost:3306/pdb
+    username: pdb
+    password: pdb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate-dialect: org.hibernate.dialect.MySQL8Dialect
+
+pdbpatents:
+  jdbc:
+    url: jdbc:mysql://localhost:3306/pdb_patents
+    username: pdb
+    password: pdb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate-dialect: org.hibernate.dialect.MySQL8Dialect
+
+tmview:
+  jdbc:
+    url: jdbc:mysql://localhost:3306/tmview
+    username: pdb
+    password: pdb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate-dialect: org.hibernate.dialect.MySQL8Dialect
+
+dsview:
+  jdbc:
+    url: jdbc:mysql://localhost:3306/dsview
+    username: pdb
+    password: pdb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate-dialect: org.hibernate.dialect.MySQL8Dialect
+
+smtp:
+  host: localhost
+  port: 25
+  user:
+  password:
+
+opendata:
+  root-dir: ./data/open-data
+  mail:
+    send-enabled: false
+    from: opendata-noreply@localhost
+    to: recipients@localhost
+  page-url: http://localhost:8080/pdb/opendata
+  scheduler.enabled: false

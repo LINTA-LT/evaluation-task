@@ -1,0 +1,95 @@
+status: 200
+content-type: text/html
+link: /pdb/
+link: /pdb/trademark/search?f540=icamp&amp;f540_mc=has&amp;sortField=applicationnumber.keyword&amp;sortDir=asc&amp;lang=en
+link: /pdb/trademark/search?f540=icamp&amp;f540_mc=has&amp;sortField=applicationnumber.keyword&amp;sortDir=asc&amp;lang=lt
+link: /pdb/trademark/search-form
+link: /pdb/trademark/export/xlsx?f540=icamp&amp;f540_mc=has&amp;sortField=applicationnumber.keyword&amp;sortDir=asc&amp;lang=en
+link: /pdb/trademark/search?f540=icamp&amp;f540_mc=has&amp;lang=en&amp;sortField=applicationnumber.keyword&amp;sortDir=asc&amp;offset=0
+link: /pdb/trademark/search?f540=icamp&amp;f540_mc=has&amp;lang=en&amp;sortField=applicationnumber.keyword&amp;sortDir=desc&amp;offset=0
+link: /pdb/trademark/search?f540=icamp&amp;f540_mc=has&amp;lang=en&amp;sortField=registrationnumber_numeric&amp;sortDir=asc&amp;offset=0
+link: /pdb/trademark/search?f540=icamp&amp;f540_mc=has&amp;lang=en&amp;sortField=registrationnumber_numeric&amp;sortDir=desc&amp;offset=0
+link: /pdb/trademark/search?f540=icamp&amp;f540_mc=has&amp;lang=en&amp;sortField=dtexpiry&amp;sortDir=asc&amp;offset=0
+link: /pdb/trademark/search?f540=icamp&amp;f540_mc=has&amp;lang=en&amp;sortField=dtexpiry&amp;sortDir=desc&amp;offset=0
+link: /pdb/trademark/search?f540=icamp&amp;f540_mc=has&amp;lang=en&amp;sortField=status_en.keyword&amp;sortDir=asc&amp;offset=0
+link: /pdb/trademark/search?f540=icamp&amp;f540_mc=has&amp;lang=en&amp;sortField=status_en.keyword&amp;sortDir=desc&amp;offset=0
+link: /pdb/trademark/details/2023%200690
+link: /pdb/trademark/details/2023%200993
+link: /pdb/trademark/details/2024%200278
+link: /pdb/trademark/details/2024%201257
+link: /pdb/trademark/details/2024%201274
+link: /pdb/trademark/details/2024%202682
+text: Trademark database
+text: EN
+text: |
+text: LT
+text: Trademark database
+text: New search
+text: Search results
+text: (
+text: Found
+text: :
+text: 6
+text: )
+text: Updated
+text: :
+text: 2026-11-09
+text: Print
+text: Export to MS Excel
+text: No
+text: Trade mark
+text: Trademark type
+text: Application No
+text: Registration No
+text: Graphic representation
+text: Nice class No
+text: Expire
+text: Legal status
+text: 1
+text: .
+text: iCamp!
+text: Word
+text: 2023 0690
+text: 43
+text: Negative decision 1
+text: 2
+text: .
+text: iCAMP AMES
+text: Word
+text: 2023 0993
+text: 89747
+text: 41
+text: 2033-06-14
+text: Registered
+text: 3
+text: .
+text: iCamp! tarptautinė edukacinė stovykla
+text: Word
+text: 2024 0278
+text: 41
+text: Negative decision 1
+text: 4
+text: .
+text: iCamp! TES
+text: Word
+text: 2024 1257
+text: 94973
+text: 41
+text: 2034-06-13
+text: Registered
+text: 5
+text: .
+text: iCamp! TES
+text: Figurative
+text: 2024 1274
+text: 92171
+text: 41
+text: 2034-06-16
+text: Registered
+text: 6
+text: .
+text: Unicamp
+text: Word
+text: 2024 2682
+text: 41
+text: Negative decision 1

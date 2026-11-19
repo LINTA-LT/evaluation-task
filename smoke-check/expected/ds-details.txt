@@ -1,0 +1,161 @@
+status: 200
+content-type: text/html
+link: ?lang=en
+link: ?lang=lt
+link: /pdb/design/image/LT702025000000032-0001-001
+link: javascript:void(0)
+link: javascript:void(0)
+link: /pdb/design/image/LT702025000000032-0001-002
+link: /pdb/design/image/LT702025000000032-0002-001
+link: javascript:void(0)
+link: javascript:void(0)
+link: /pdb/design/image/LT702025000000032-0002-002
+link: /pdb/design/image/LT702025000000032-0003-001
+link: javascript:void(0)
+link: javascript:void(0)
+link: /pdb/design/image/LT702025000000032-0003-002
+link: /pdb/design/image/LT702025000000032-0004-001
+link: javascript:void(0)
+link: javascript:void(0)
+link: /pdb/design/image/LT702025000000032-0004-002
+link: /pdb/design/image/LT702025000000032-0005-001
+link: javascript:void(0)
+link: javascript:void(0)
+link: /pdb/design/image/LT702025000000032-0005-002
+link: /pdb/design/image/LT702025000000032-0006-001
+link: javascript:void(0)
+link: javascript:void(0)
+link: /pdb/design/image/LT702025000000032-0006-002
+link: /pdb/design/image/LT702025000000032-0007-001
+link: javascript:void(0)
+link: javascript:void(0)
+link: /pdb/design/image/LT702025000000032-0007-002
+link: /pdb/design/image/LT702025000000032-0008-001
+link: javascript:void(0)
+link: javascript:void(0)
+link: /pdb/design/image/LT702025000000032-0008-002
+link: /pdb/design/image/LT702025000000032-0009-001
+link: javascript:void(0)
+link: javascript:void(0)
+link: /pdb/design/image/LT702025000000032-0009-002
+link: /pdb/design/image/LT702025000000032-0010-001
+link: javascript:void(0)
+link: javascript:void(0)
+link: /pdb/design/image/LT702025000000032-0010-002
+text: Design details
+text: EN
+text: |
+text: LT
+text: (54)
+text: AUTOMOBILIŲ ORO GAIVIKLIAI
+text: Design
+text: (21)
+text: Application number
+text: 2025 032
+text: (22)
+text: Date of filing the application
+text: 2025-11-11
+text: (11)
+text: Registration number
+text: 2125
+text: (15)
+text: Registration date
+text: 2025-12-12
+text: (18)
+text: Expire
+text: 2030-11-11
+text: (45)
+text: Date of registration publication, bulletin No.
+text: 2025-12-29
+text: ,
+text: 2025/24
+text: Legal status
+text: Registered and fully published
+text: Convention priority
+text: Holder of registration of the Design
+text: (73)
+text: Name
+text: Aleksas Pavardenis172539
+text: Address
+text: Ukmergės g. 92-50, LT-35273 Kaunas
+text: Country
+text: LT
+text: Address for correspondence
+text: Aleksas Pavardenis172539
+text: Pilies g. 105-57, LT-43192 Panevėžys
+text: LT
+text: Reproduction of the Design
+text: (28)
+text: Number of designs included in the filing
+text: 10
+text: (55)
+text: 1
+text: .
+text: 1
+text: .
+text: 1
+text: .
+text: 2
+text: 2
+text: .
+text: 1
+text: .
+text: 2
+text: .
+text: 2
+text: 3
+text: .
+text: 1
+text: .
+text: 3
+text: .
+text: 2
+text: 4
+text: .
+text: 1
+text: .
+text: 4
+text: .
+text: 2
+text: 5
+text: .
+text: 1
+text: .
+text: 5
+text: .
+text: 2
+text: 6
+text: .
+text: 1
+text: .
+text: 6
+text: .
+text: 2
+text: 7
+text: .
+text: 1
+text: .
+text: 7
+text: .
+text: 2
+text: 8
+text: .
+text: 1
+text: .
+text: 8
+text: .
+text: 2
+text: 9
+text: .
+text: 1
+text: .
+text: 9
+text: .
+text: 2
+text: 10
+text: .
+text: 1
+text: .
+text: 10
+text: .
+text: 2

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title th:text="#{dispute.common.decisiondetails.windowtitle}"/>
+
+</head>
+<body>
+
+<span id="comments" th:utext="${#strings.replace(dispute.decisionComments, T(org.apache.commons.lang3.StringUtils).LF, '&lt;br /&gt;')}"/>
+
+</body>
+
+<script>
+    document.getElementById("comments").innerHTML = document.getElementById("comments").innerHTML.replace(/(<\/p>)(<br>)/g,"$1");
+</script>
+</html>

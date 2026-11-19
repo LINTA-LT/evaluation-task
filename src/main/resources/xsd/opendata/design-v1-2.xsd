@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0"
+           targetNamespace="http://vpb.lt/open-data/schemas/design/v1-2"
+           xmlns="http://vpb.lt/open-data/schemas/design/v1-2"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:cc="http://vpb.lt/open-data/schemas/iso3166-1-extended-country-code/v1-1"
+           xmlns:lc="http://vpb.lt/open-data/schemas/iso639-language-code/v1"
+           xmlns:addr="http://vpb.lt/open-data/schemas/address/v1-1"
+           elementFormDefault="qualified">
+
+    <xs:annotation>
+        <xs:documentation>
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:import schemaLocation="iso3166-1-extended-country-code-v1-1.xsd" namespace="http://vpb.lt/open-data/schemas/iso3166-1-extended-country-code/v1-1"/>
+    <xs:import schemaLocation="iso639-language-code-v1.xsd" namespace="http://vpb.lt/open-data/schemas/iso639-language-code/v1"/>
+    <xs:import schemaLocation="address-v1-1.xsd" namespace="http://vpb.lt/open-data/schemas/address/v1-1"/>
+
+    <xs:element name="Design" type="DesignType"/>
+
+    <xs:complexType name="DesignType">
+        <xs:sequence>
+            <xs:element name="ApplicationReference" type="xs:string" minOccurs="0"/>
+            <!-- INID (12) - ApplicationLanguageCode -->
+            <xs:element name="ApplicationLanguageCode" type="lc:ISO639LanguageCodeType" default="lt"/>
+            <!-- INID (57) - DesignDescription -->
+            <xs:element name="DesignDescription" type="xs:string" minOccurs="0"/>
+            <!-- INID (43)/(44) - ApplicationPublicationDate -->
+            <xs:element name="ApplicationPublicationDate" type="xs:date" minOccurs="0"/>
+
+            <xs:element name="RenewalCurrentStatusCode" type="RenewalCurrentStatusCodeType" minOccurs="0"/>
+            <xs:element name="DesignCurrentStatusDate" type="xs:date" minOccurs="0"/>
+            <!-- INID (19) - RegistrationOfficeCode -->
+            <xs:element name="RegistrationOfficeCode" type="cc:ExtendedISO3166CountryCodeType"/>
+            <xs:element name="DesignIdentifier" type="xs:string" minOccurs="0"/>
+            <!-- INID (21) - ApplicationNumber -->
+            <xs:element name="ApplicationNumber" type="xs:string" minOccurs="0"/>
+            <!-- INID (22) - ApplicationDate -->
+            <xs:element name="ApplicationDate" type="xs:date" minOccurs="0"/>
+            <!-- INID (11) - RegistrationNumber -->
+            <xs:element name="RegistrationNumber" type="xs:string" minOccurs="0"/>
+            <!-- INID (15) - RegistrationDate -->
+            <xs:element name="RegistrationDate" type="xs:date" minOccurs="0"/>
+            <!-- INID (45) - PublicationDate -->
+            <xs:element name="PublicationDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="DesignURI" type="URIType" minOccurs="0"/>
+            <!-- INID (18) - ExpiryDate -->
+            <xs:element name="ExpiryDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="EffectiveDate" type="xs:date" minOccurs="0"/>
+
+            <xs:element name="DesignCurrentStatusCode" type="DesignCurrentStatusCodeType" minOccurs="0"/>
+            <xs:element name="DesignPreferedRepresentation" type="ViewType" minOccurs="0"/>
+
+            <xs:element name="DesignRepresentationSheetDetails" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="DesignRepresentationSheet" type="DesignRepresentationSheetType"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- INID (54) - IndicationProduct -->
+            <xs:element name="IndicationProductDetails" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="IndicationProduct" type="TextType" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- INID (51) - ClassDescription -->
+            <xs:element name="ClassDescriptionDetails" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ClassDescription" type="ClassDescriptionType" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- INID (31) - PriorityNumber -->
+            <!-- INID (32) - PriorityDate -->
+            <!-- INID (33) - PriorityCountry -->
+            <xs:element name="PriorityDetails" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Priority" type="PriorityType" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PublicationDetails" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Publication" type="PublicationType" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- INID (23) - ExhibitionPriority -->
+            <!-- INID (30) - ExhibitionName -->
+            <xs:element name="ExhibitionPriorityDetails" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ExhibitionPriority" type="ExhibitionPriorityType" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- INID (71) - Applicant -->
+            <xs:element name="ApplicantDetails">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Applicant" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="PersonType" type="xs:token"/>
+                                    <xs:element name="AddressBook" type="addr:AddressType"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- INID (74) - Representative -->
+            <xs:element name="RepresentativeDetails" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Representative" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="PersonType" type="xs:token"/>
+                                    <xs:element name="AddressBook" type="addr:AddressType"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <!-- INID (72) - Designer -->
+            <xs:element name="DesignerDetails" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Representative" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="PersonType" type="xs:token"/>
+                                    <xs:element name="AddressBook" type="addr:AddressType"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DesignRecordDetails" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="DesignRecord" type="DesignRecordType" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DesignRecordEventDetails" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="DesignRecordEvent" type="DesignRecordEventType" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ClassDescriptionType">
+        <xs:sequence>
+            <xs:element name="ClassNumber" type="LocarnoClassNumberType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DesignBasicRecordType">
+        <xs:sequence>
+            <xs:element name="RecordIdentifier" type="xs:string" minOccurs="0"/>
+            <xs:element name="RecordFilingDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="BasicRecordKind" type="xs:string"/>
+            <xs:element name="RecordReference" type="xs:string" minOccurs="0"/>
+            <xs:element name="RecordCurrentStatusCode" type="xs:string" minOccurs="0"/>
+            <xs:element name="RecordCurrentStatusDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="RecordNotificationDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="RecordEffectiveDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="RecordPublicationDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="VerbalElementText" type="TextType" minOccurs="0"/>
+            <xs:element name="ClaimantDetails" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Claimant" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="PersonType" type="xs:token"/>
+                                    <xs:element name="AddressBook" type="addr:AddressType"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="RepresentativeDetails" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Representative" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="PersonType" type="xs:token"/>
+                                    <xs:element name="AddressBook" type="addr:AddressType"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DesignRecordType">
+        <xs:sequence>
+            <xs:element name="DesignBasicRecord" type="DesignBasicRecordType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DesignRepresentationSheetType">
+        <xs:sequence>
+            <xs:element name="ViewDetails">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="View" type="ViewType" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ExhibitionPriorityType">
+        <xs:sequence>
+            <!--<xs:element name="ExhibitionName" type="xs:string"/>-->
+            <xs:element name="ExhibitionDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="ExhibitionFirstDisplayDate" type="xs:date" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PriorityType">
+        <xs:sequence>
+            <xs:element name="PriorityCountryCode" type="cc:ExtendedISO3166CountryCodeType" minOccurs="0"/>
+            <xs:element name="PriorityNumber" type="xs:token" minOccurs="0"/>
+            <xs:element name="PriorityDate" type="xs:date" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PublicationType">
+        <xs:sequence>
+            <xs:element name="PublicationIdentifier" type="xs:string" minOccurs="0"/>
+            <xs:element name="PublicationSection" type="PublicationSectionType"/>
+            <xs:element name="PublicationDate" type="xs:date" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="RenewalCurrentStatusCodeType">
+        <xs:restriction base="xs:token">
+            <!-- TO BE DEFINED -->
+
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="ViewType">
+        <xs:sequence>
+            <xs:element name="ViewURI" type="URIType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="DesignCurrentStatusCodeType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Filed"/>
+            <xs:enumeration value="Application published"/>
+            <xs:enumeration value="Registered and fully published"/>
+            <xs:enumeration value="Registered and subject to deferment"/>
+            <xs:enumeration value="Lack of effects"/>
+            <xs:enumeration value="Design surrendered"/>
+            <xs:enumeration value="Invalidity procedure pending"/>
+            <xs:enumeration value="Design declared invalid"/>
+            <xs:enumeration value="Expiring"/>
+            <xs:enumeration value="Design lapsed"/>
+            <xs:enumeration value="Opposed"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="DesignRecordEventType">
+        <xs:sequence>
+            <xs:element name="DesignRecordEventDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="DesignRecordEventCode" type="xs:string" minOccurs="0"/>
+            <xs:element name="DesignRecordEventStatusCode" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="LocarnoClassNumberType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9][0-9]\.[0-9][0-9]|[0-9][0-9]"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="PublicationSectionType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Publication 6 month after application date"/>
+            <xs:enumeration value="Publication of intention to register design"/>
+            <xs:enumeration value="Registration"/>
+            <xs:enumeration value="IR Registration"/>
+            <xs:enumeration value="Renewal"/>
+            <xs:enumeration value="Surrendered, Rejected"/>
+            <xs:enumeration value="Change of address (applicant)"/>
+            <xs:enumeration value="Change of name (applicant)"/>
+            <xs:enumeration value="Limitation"/>
+            <xs:enumeration value="Reprint"/>
+            <xs:enumeration value="License"/>
+            <xs:enumeration value="Transfer"/>
+            <xs:enumeration value="Changes to registration"/>
+            <xs:enumeration value="Declared invalid"/>
+            <xs:enumeration value="Representative"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="TextType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="languageCode" type="xs:language"/>
+                <xs:attribute name="sequenceNumber" type="xs:integer"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="URIType">
+        <xs:simpleContent>
+            <xs:extension base="xs:anyURI"/>
+        </xs:simpleContent>
+    </xs:complexType>
+
+</xs:schema>

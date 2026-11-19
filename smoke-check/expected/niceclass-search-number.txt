@@ -1,0 +1,32 @@
+status: 200
+content-type: text/html
+link: /pdb/
+link: /pdb/niceclass/search?class_number=5&amp;class_number_mc=eq&amp;class_term_en=quinquina&amp;class_term_en_mc=has&amp;version_year=2012&amp;lang=en
+link: /pdb/niceclass/search?class_number=5&amp;class_number_mc=eq&amp;class_term_en=quinquina&amp;class_term_en_mc=has&amp;version_year=2012&amp;lang=lt
+link: /pdb/niceclass/search-form
+link: /pdb/niceclass/export/xlsx?class_number=5&amp;class_number_mc=eq&amp;class_term_en=quinquina&amp;class_term_en_mc=has&amp;version_year=2012&amp;lang=en
+text: The International (Nice) Classification of Goods and Services
+text: EN
+text: |
+text: LT
+text: The International (Nice) Classification of Goods and Services
+text: (version of the year 2012)
+text: New search
+text: Search results
+text: (
+text: Found
+text: :
+text: 1
+text: )
+text: Print
+text: Export to MS Excel
+text: No
+text: Class Number
+text: Term (Lt)
+text: Basic Number
+text: Term (En)
+text: 1.
+text: 5
+text: Chininmedžių žievės (medicinos reikmėms)
+text: 050255
+text: Quinquina for medical purposes

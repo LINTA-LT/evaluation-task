@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{welcomepage.trademarks.search}"/>
+
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{/jquery-ui-1.12.1/jquery-ui.css}">
+
+    <script th:src="@{/js/utilities.js}"></script>
+    <script th:src="@{/js/jquery-3.4.1.js}"></script>
+    <script th:src="@{/jquery-ui-1.12.1/jquery-ui.min.js}"></script>
+    <script th:src="@{/jquery-ui-1.12.1/datepicker-lt.js}"></script>
+    <script th:inline="javascript">
+        //locale language "lt" or "en" for the calendar
+        var locale = [[${#locale.language}]];
+    </script>
+    <script>
+        $( function() {
+            $( "[data-type='datepicker']").datepicker(
+                {
+                    constrainInput: true,
+                    dateFormat: "yy/mm/dd",
+                    firstDay: 1
+                }
+            );
+        } );
+        $.datepicker.setDefaults( $.datepicker.regional[ locale ] );
+    </script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="row mb2">
+        <div class="col-md-7 col-sm-12">
+            <a th:href="@{/}">
+                <img th:src="@{/images/home-button-icon-6.png}" width="24px" height="24px" th:alt="#{common.homepage}">
+            </a>
+            <a class="lang-select" th:href="@{''(lang='en')}">EN</a>
+            <span class="lang-select-separator"> | </span>
+            <a class="lang-select" th:href="@{''(lang='lt')}">LT</a>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-12 d-flex justify-content-end">
+            <p>
+                <span class="mr-1"><span th:text="#{common.lastupdate}"/>: </span>
+                <span class='color_rez'><span class="color_rez" th:text="${lastUpdated}"/></span>
+            </p>
+        </div>
+    </div>
+
+    <form class="form-vpb form-inline" th:action="@{/trademark/advanced-search}" method="get" th:object="${searchForm}">
+
+        <div class="form-group row mr-md-0 ml-md-0 d-red">
+            <h4 th:text="#{welcomepage.trademarks.search}"/>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f540_mc">
+                    <strong>(540)</strong> <span th:text="#{tm.searchform.verbalelement}"/>
+                </label>
+            </div>
+            <div class="col-md-3">
+                <select id="f540_mc" class="form-control" name="f540_mc">
+                    <option value="eq" th:selected="${searchForm.f540_mc != null ? searchForm.f540_mc.value == 'eq' : false}" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" th:selected="${searchForm.f540_mc != null ? searchForm.f540_mc.value == 'has' : true}" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:selected="${searchForm.f540_mc != null ? searchForm.f540_mc.value == 'sw' : false}" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:selected="${searchForm.f540_mc != null ? searchForm.f540_mc.value == 'ew' : false}" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f540" maxlength="128" th:value="*{f540}">
+            </div>
+            <div class="col-md-1">
+                <a th:href="|javascript: openHelpWindow('@{/tm-help.html#540}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="tyfeature_mc" th:text="#{tm.searchform.tyfeature}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="tyfeature_mc" disabled="disabled" class="form-control" name="tyfeature_mc">
+                    <option value="eq" selected="selected" th:text="#{common.dropdown.option.equals}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select id="tyfeature" class="form-control" name="tyfeature">
+                    <option value="" th:selected="${searchForm.tyfeature != null ? searchForm.tyfeature == '' : true}" th:text="#{common.dropdown.label.all}"/>
+                    <option value="Word" th:selected="${searchForm.tyfeature != null ? searchForm.tyfeature == 'Word' : false}" th:text="#{trademark.tyfeature.Word}"/>
+                    <option value="Figurative" th:selected="${searchForm.tyfeature != null ? searchForm.tyfeature == 'Figurative' : false}" th:text="#{trademark.tyfeature.Figurative}"/>
+                    <option value="Colour" th:selected="${searchForm.tyfeature != null ? searchForm.tyfeature == 'Colour' : false}" th:text="#{trademark.tyfeature.Colour}"/>
+                    <option value="3-D" th:selected="${searchForm.tyfeature != null ? searchForm.tyfeature == '3-D' : false}" th:text="#{trademark.tyfeature.3-D}"/>
+                    <option value="Sound" th:selected="${searchForm.tyfeature != null ? searchForm.tyfeature == 'Sound' : false}" th:text="#{trademark.tyfeature.Sound}"/>
+                    <option value="Other" th:selected="${searchForm.tyfeature != null ? searchForm.tyfeature == 'Other' : false}" th:text="#{trademark.tyfeature.Other}"/>
+                    <option value="Hologram" th:selected="${searchForm.tyfeature != null ? searchForm.tyfeature == 'Hologram' : false}" th:text="#{trademark.tyfeature.Hologram}"/>
+                    <option value="Motion" th:selected="${searchForm.tyfeature != null ? searchForm.tyfeature == 'Motion' : false}" th:text="#{trademark.tyfeature.Motion}"/>
+                    <option value="Multimedia" th:selected="${searchForm.tyfeature != null ? searchForm.tyfeature == 'Multimedia' : false}" th:text="#{trademark.tyfeature.Multimedia}"/>
+                    <option value="Multimedia" th:selected="${searchForm.tyfeature != null ? searchForm.tyfeature == 'Multimedia' : false}" th:text="#{trademark.tyfeature.Positioning}"/>
+                    <option value="Multimedia" th:selected="${searchForm.tyfeature != null ? searchForm.tyfeature == 'Multimedia' : false}" th:text="#{trademark.tyfeature.Pattern}"/>
+                </select>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="tykind_mc" th:text="#{tm.searchform.tykind}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="tykind_mc" disabled="disabled" class="form-control" name="tykind_mc">
+                    <option value="eq" selected="selected" th:text="#{common.dropdown.option.equals}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select id="tykind" class="form-control" name="tykind">
+                    <option value="" th:selected="${searchForm.tykind != null ? searchForm.tykind == '' : true}" th:text="#{common.dropdown.label.all}"/>
+                    <option value="Individual" th:selected="${searchForm.tykind != null ? searchForm.tykind == 'Individual' : false}" th:text="#{trademark.tykind.Individual}"/>
+                    <option value="Collective" th:selected="${searchForm.tykind != null ? searchForm.tykind == 'Collective' : false}" th:text="#{trademark.tykind.Collective}"/>
+                    <option value="Certification" th:selected="${searchForm.tykind != null ? searchForm.tykind == 'Certification' : false}" th:text="#{trademark.tykind.Certification}"/>
+                </select>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="status_mc" th:text="#{tm.searchform.status}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="status_mc" disabled="disabled" class="form-control" name="status_mc">
+                    <option value="eq" selected="selected" th:text="#{common.dropdown.option.equals}"/>
+                </select>
+            </div>
+            <div class="col-md-3" th:if="${locale == 'lt'}">
+                <select id="statusLt" class="form-control" name="statusLt">
+                    <option value="" th:selected="${searchForm.statusLt == null or searchForm.statusLt == ''}" th:text="#{common.dropdown.label.all}"></option>
+                    <option th:each="statusLt : ${statusLtList}"
+                            th:value="${statusLt}"
+                            th:selected="${searchForm.statusLt == statusLt}"
+                            th:text="#{${'trademark.statusLt.' + statusLt}}"></option>
+                </select>
+            </div>
+
+            <div class="col-md-3" th:unless="${locale == 'lt'}">
+                <select id="statusEn" class="form-control" name="statusEn">
+                    <option value="" th:selected="${searchForm.statusEn == null or searchForm.statusEn == ''}" th:text="#{common.dropdown.label.all}"></option>
+                    <option th:each="statusEn : ${statusEnList}"
+                            th:value="${statusEn}"
+                            th:selected="${searchForm.statusEn == statusEn}"
+                            th:text="#{${'trademark.statusEn.' + statusEn}}"></option>
+                </select>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f210_mc"><strong>(210)</strong> <span th:text="#{ip.searchform.applicationnumber}"/></label>
+            </div>
+            <div class="col-md-3">
+                <select id="f210_mc" class="form-control" name="f210_mc">
+                    <option value="eq" th:selected="${searchForm.f210_mc != null ? searchForm.f210_mc.value == 'eq' : false}" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" th:selected="${searchForm.f210_mc != null ? searchForm.f210_mc.value == 'has' : true}" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:selected="${searchForm.f210_mc != null ? searchForm.f210_mc.value == 'sw' : false}" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:selected="${searchForm.f210_mc != null ? searchForm.f210_mc.value == 'ew' : false}" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f210" maxlength="30" th:value="*{f210}">
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/tm-help.html#210}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+        </div>
+
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f111_mc"><strong>(111)</strong> <span th:text="#{ip.searchform.registrationnumber}"/></label>
+            </div>
+            <div class="col-md-3">
+                <select id="f111_mc" class="form-control" name="f111_mc">
+                    <option value="eq" th:selected="${searchForm.f111_mc != null ? searchForm.f111_mc.value == 'eq' : false}" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" th:selected="${searchForm.f111_mc != null ? searchForm.f111_mc.value == 'has' : true}" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:selected="${searchForm.f111_mc != null ? searchForm.f111_mc.value == 'sw' : false}" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:selected="${searchForm.f111_mc != null ? searchForm.f111_mc.value == 'ew' : false}" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f111" maxlength="15" th:value="*{f111}">
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/tm-help.html#111}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label>
+                    <strong>(220)</strong> <span th:text="#{ip.searchform.applicationdate}"/>
+                </label>
+            </div>
+            <label for="f220_from" class="col-md-1" th:text="#{ip.searchform.datefrom}"/>
+            <div class="col-md-2">
+                <input id="f220_from" data-type="datepicker" placeholder="yyyy/mm/dd" class="form-control" name="f220_from" th:value="*{f220_from}">
+            </div>
+            <label for="f220_to" class="col-md-1" th:text="#{ip.searchform.dateto}"/>
+            <div class="col-md-2">
+                <input id="f220_to" data-type="datepicker" placeholder="yyyy/mm/dd" class="form-control" name="f220_to" th:value="*{f220_to}">
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label>
+                    <strong>(181)</strong> <span th:text="#{ip.searchform.expirationdate}"/>
+                </label>
+            </div>
+            <label for="f181_from" class="col-md-1" th:text="#{ip.searchform.datefrom}"/>
+            <div class="col-md-2">
+                <input id="f181_from" type="text" data-type="datepicker" placeholder="yyyy/mm/dd" class="form-control" name="f181_from" th:value="*{f181_from}"/>
+            </div>
+            <label for="f220_to" class="col-md-1" th:text="#{ip.searchform.dateto}"/>
+            <div class="col-md-2">
+                <input id="f181_to" type="text" data-type="datepicker" placeholder="yyyy/mm/dd" class="form-control" name="f181_to" th:value="*{f181_to}"/>
+            </div>
+        </div>
+
+        <!-- ********* 511 Goods and Services (Nice Classification) ****************  -->
+
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 offset-md-1 label-group">
+                <strong>(511)</strong> <span th:text="#{tm.searchform.gs}"/>
+            </div>
+            <div class="col-md-6"><hr/></div>
+        </div>
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f511_class_mc" th:text="#{tm.searchform.gs.class}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="f511_class_mc" class="form-control" name="f511_class_mc">
+                    <option selected="selected" value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" th:text="#{common.dropdown.option.contains}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f511_class">
+            </div>
+            <div class="col-md-1">
+                <a th:href="|javascript: openHelpWindow('@{/tm-help.html#511}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f511_list_mc" th:text="#{tm.searchform.gs.list}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="f511_list_mc" disabled="true" class="form-control" name="f511_list_mc">
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f511_list" maxlength="128">
+            </div>
+            <div class="col-md-1">
+                <a th:href="|javascript: openHelpWindow('@{/tm-help.html#511}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+        </div>
+
+        <!-- ********* 531 Vienna codes ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f531_mc">
+                    <strong>(531)</strong>
+                    <span th:text="#{tm.searchform.viennaclass}"/>
+                </label>
+            </div>
+            <div class="col-md-2 offset-md-1">
+                <select id="f531_mc" disabled="true" class="form-control" name="f531_mc">
+                    <option selected="selected" value="eq" th:text="#{common.dropdown.option.equals}"/>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-4"><input class="form-control" name="f531_1" maxlength="2" min="0"></div>
+                    <div class="col-md-2">_</div>
+                    <div class="col-md-4"><input class="form-control" name="f531_2" maxlength="2" min="0"></div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/tm-help.html#531}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+        </div>
+
+        <!-- ********* 732 Proprietor of the mark ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 offset-md-1 label-group">
+                <strong>(732)</strong> <span th:text="#{ip.searchform.applicant.tm}"/>
+            </div>
+            <div class="col-md-6"><hr></div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 label-col offset-md-1">
+                <label for="f732_name_mc" th:text="#{ip.searchform.name}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="f732_name_mc" class="form-control" name="f732_name_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f732_name" maxlength="128">
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 label-col offset-md-1">
+                <label for="f732_address_mc" th:text="#{ip.searchform.address}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="f732_address_mc" disabled="true" class="form-control" name="f732_address_mc">
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f732_address" maxlength="64">
+            </div>
+        </div>
+
+        <!-- ********* Publication of the registration  ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 offset-md-1 label-group">
+                <strong>(450)</strong> <span th:text="#{ip.searchform.regpubdate}"/>
+            </div>
+            <div class="col-md-6"><hr></div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col"></div>
+            <label for="f450_year" class="col-md-1" th:text="#{ip.searchform.year}"/>
+            <div class="col-md-2">
+                <input class="form-control" type="text" id="f450_year" name="f450_year" maxlength="4"/>
+            </div>
+            <label for="f450_bulletin_no" class="col-md-2" th:text="#{ip.searchform.bulletin}"/>
+            <div class="col-md-1">
+                <input class="form-control" type="text" id="f450_bulletin_no" name="f450_bulletin_no" maxlength="2"/>
+            </div>
+        </div>
+
+        <!-- ********* Publication of the application  ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 offset-md-1 label-group">
+                <strong>(442)</strong> <span th:text="#{ip.searchform.apppubdate}"/>
+            </div>
+            <div class="col-md-6"><hr></div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col"></div>
+            <label for="f442_year" class="col-md-1" th:text="#{ip.searchform.year}"/>
+            <div class="col-md-2">
+                <input class="form-control" type="text" id="f442_year" name="f442_year" maxlength="4"/>
+            </div>
+            <label for="f442_bulletin_no" class="col-md-2" th:text="#{ip.searchform.bulletin}"/>
+            <div class="col-md-1">
+                <input class="form-control" type="text" id="f442_bulletin_no" name="f442_bulletin_no" maxlength="2"/>
+            </div>
+        </div>
+
+        <!-- ********* 740 Representative  ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-2 offset-md-2 label-group">
+                <strong>(740)</strong> <span th:text="#{ip.searchform.representative}"/>
+            </div>
+            <div class="col-md-6"><hr></div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 label-col offset-md-1">
+                <label for="f740_name_mc" th:text="#{ip.searchform.name}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="f740_name_mc" class="form-control" name="f740_name_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f740_name" maxlength="64">
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 label-col offset-md-1">
+                <label for="f740_address_mc" th:text="#{ip.searchform.address}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="f740_address_mc" disabled="true" class="form-control" name="f740_address_mc">
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f740_address" size="30" maxlength="128">
+            </div>
+        </div>
+
+        <input class="btn btn-primary btn-vpb d-none" type="submit" th:value="#{common.searchform.submit}"/>
+
+        <div class="form-group row mr-md-0 ml-md-0">
+            <div class="col-md-5 offset-md-5 extend-search-vpb">
+                <button type="submit" th:formaction="@{/trademark/search-form}" class="link-button-extend-search">
+                    <img th:src="@{/images/cross.jpg}" border="0"/>
+                    <span th:text="#{common.quicksearch}"/></a>
+                </button>
+            </div>
+        </div>
+        <div class="form-group row mr-md-0 ml-md-0">
+            <div class="col-md-8 offset-md-2 col-sm-12 offset-sm-0 extend-search-vpb">
+                <input class="btn btn-primary btn-vpb" type="submit" th:value="#{common.searchform.submit}"/>
+                <input class="btn btn-primary btn-vpb" type="reset" th:value="#{common.searchform.reset}"/>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>

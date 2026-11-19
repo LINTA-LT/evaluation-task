@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+    <title th:text="#{ip.details.tm.windowtitle}"/>
+
+    <link rel="stylesheet" th:href="@{/details1.css}">
+    <link rel="stylesheet" th:href="@{/details2.css}">
+
+    <script th:src="@{/js/utilities.js}"></script>
+
+</head>
+<body>
+
+<br>
+<div>
+    <span class="print print-details" onclick="window.print(); return false;"><img th:src="@{/images/print.png}" th:alt="#{common.print}"></span>
+    <span>
+        <a th:href="@{''(lang='en')}">EN</a>
+        <span > | </span>
+        <a th:href="@{''(lang='lt')}">LT</a>
+    </span>
+</div>
+
+<h6 align="center"><strong><span th:text="${trademark.trademark}"/></strong></h6>
+
+<table cellspacing="4" align="center" width="90%">
+    <tr><th colspan="3" th:text="#{ip.details.tm.section.main}"/></tr>
+    <tr><td colspan="3">&nbsp;</td></tr>
+    <tr>
+        <td><b>(210)</b></td>
+        <td th:text="#{ip.details.applicationnumber}"/>
+        <td><strong><span th:text="${trademark.applicationNumber}"/></strong></td>
+    </tr>
+
+    <tr>
+        <td><b>(220)</b></td>
+        <td th:text="#{ip.details.applicationdate}"/>
+        <td><strong><span th:text="${trademark.applicationDate}"/></strong></td>
+    </tr>
+
+    <tr>
+        <td><b>(111)</b></td>
+        <td th:text="#{ip.details.registrationnumber}"/>
+        <td width="50%"><strong><span th:text="${trademark.registrationNumber}"/></strong></td>
+    </tr>
+
+    <tr>
+        <td><b>(151)</b></td>
+        <td th:text="#{ip.details.registrationdate}"/>
+        <td><strong><span th:text="${trademark.registrationDate}"/></strong></td>
+    </tr>
+
+    <tr>
+        <td><b>(181)</b></td>
+        <td th:text="#{ip.details.expirydate}"/>
+        <td><strong><span th:text="${trademark.expires}"/></strong></td>
+    </tr>
+
+    <tr th:unless="${trademark.applicationPublicationDate == null}">
+        <td><b>(442)</b></td>
+        <td th:text="#{ip.details.publicationdate}"/>
+        <td><strong><span th:text="${trademark.applicationPublicationDate}"/>, <span th:text="${trademark.applicationPublicationBulletin}"/></strong></td>
+    </tr>
+
+    <tr>
+        <td><b>(450)</b></td>
+        <td th:text="#{ip.details.regpubdate}"/>
+        <td><strong th:unless="${trademark.registrationPublicationDate == null}">
+                <span th:text="${trademark.registrationPublicationDate}"/>,
+                <span th:text="${trademark.registrationPublicationBulletin}"/>
+            </strong>
+        </td>
+    </tr>
+
+    <tr>
+        <td>&nbsp;</td>
+        <td th:text="#{ip.details.status}"/>
+        <td>
+            <strong>
+                <div th:if="${#locale.language == 'lt'}" th:text="${trademark.statusLt}"/>
+                <div th:if="${#locale.language == 'en'}" th:text="${trademark.statusEn}"/>
+                <div th:if="${trademark.indSeniority}" th:text="#{ip.list.tm.status.ctmseniorityclaimed}"/>
+                <div th:if="${trademark.indRightsPledged}" th:text="#{ip.details.tm.indrightspledged}"/>
+                <div th:if="${trademark.indRightsArrested}" th:text="#{ip.details.tm.indrightsarrested}"/>
+            </strong>
+        </td>
+    </tr>
+
+    <th:block th:if="${trademark.indSeniority}">
+        <tr>
+            <td>&nbsp;</td>
+            <td th:text="#{ip.details.tm.seniority}"/>
+            <td>
+                <strong>
+                    <th:block th:each="ctmNumber: ${trademark.ctmSeniority}">
+                        <a th:with="st13=${'EM50' + T(org.apache.commons.lang3.StringUtils).leftPad(ctmNumber, 13, '0')}"
+                                th:href="@{'https://www.tmdn.org/tmview/#/tmview/detail/' + ${st13}}" target="_blank"><span th:text="${ctmNumber}"/></a><br/>
+                    </th:block>
+                </strong>
+            </td>
+        </tr>
+    </th:block>
+
+    <th:block th:if="${trademark.sanctionsApplied}">
+        <tr>
+            <td></td>
+            <td></td>
+            <td><div style="color: red" th:text="#{ip.details.tm.sanctionsapplied}"/></td>
+        </tr>
+    </th:block>
+
+    <tr><td colspan="3">&nbsp;</td></tr>
+    <tr><th colspan="3" th:text="#{ip.details.tm.section.graphics}"/></tr>
+    <tr>
+        <td>
+            <strong th:if="${trademark.tyfeature == 'Other'}">(559)</strong>
+            <strong th:if="${trademark.tyfeature == 'Colour'}">(558)</strong>
+            <strong th:if="${trademark.tyfeature == 'Sound'}">(556)</strong>
+            <strong th:if="${trademark.tyfeature == 'Hologram'}">(555)</strong>
+            <strong th:if="${trademark.tyfeature == '3-D'}">(554)</strong>
+            <strong th:if="${trademark.isTyfeatureIn('Motion', 'Multimedia')}">(553)</strong>
+            <strong th:if="${trademark.isTyfeatureIn('Positioning', 'Pattern')}">(552)</strong>
+        </td>
+        <td>
+            <span th:unless="${trademark.isTyfeatureIn('Word', 'Figurative', 'Combined')}" th:text="#{'trademark.tyfeature.' + ${trademark.tyfeature}}"/>
+        </td>
+    </tr>
+    <tr>
+        <td><b>(540)</b></td>
+        <td colspan="2">
+            <strong style="vertical-align: top;" th:text="${trademark.trademark}"/>
+            <th:block th:if="${trademark.tyfeature != 'Word' && trademark.tyfeature != 'Multimedia' && trademark.tyfeature != 'Sound'}">
+                <div align="center">
+                    <a th:href="@{/trademark/image/{applicationnumber}(applicationnumber=${trademark.applicationNumber})}" onclick="openImageWindow(this.href); return false;">
+                        <img style="max-height: 300px; max-width: 700px;"
+                                th:src="@{/trademark/image/{applicationNumber}(applicationNumber=${trademark.applicationNumber})}"
+                                th:unless="${trademark.tyfeature == 'Word'}"/>
+                    </a>
+                </div>
+            </th:block>
+            <th:block th:if="${trademark.tyfeature == 'Multimedia'}">
+                <video controls="" style="outline: none;" width="320" height="240">
+                    <source th:src="@{/trademark/binary/{applicationNumber}(applicationNumber=${trademark.applicationNumber})}">
+                </video>
+            </th:block>
+
+            <th:block th:if="${trademark.tyfeature == 'Sound'}">
+                <audio controls="" style="outline: none;">
+                    <source th:src="@{/trademark/binary/{applicationNumber}(applicationNumber=${trademark.applicationNumber})}">
+                </audio>
+            </th:block>
+
+        </td>
+    </tr>
+
+    <tr><td colspan="3">&nbsp;</td></tr>
+    <tr>
+        <td><b>(531)</b></td>
+        <td th:text="#{ip.details.tm.viennacodes}"/>
+        <td ><strong><strong><span th:text="${trademark.viennaClassification}"/></strong></strong></td>
+    </tr>
+
+    <tr><td colspan="3">&nbsp;</td></tr>
+    <tr><th colspan="3" th:text="#{ip.details.tm.section.claimedcolors}"/></tr>
+    <tr>
+        <td><b>(591)</b></td>
+        <td colspan="2"><strong><span th:text="${trademark.colourClaimText}"/></strong></td>
+    </tr>
+    <tr><th colspan="3" th:text="#{ip.details.tm.section.gs}"/>
+    </tr>
+
+    <th:block th:each="classification: ${trademark.niceClassification}">
+        <tr>
+            <td><b><span th:if="${classificationStat.index == 0}">(511)</span></b></td>
+            <td colspan="2">
+                <strong><span th:text="${classification.classNumber}"/> <span th:text="${classification.description}"/>.</strong><br>
+            </strong></td>
+        </tr>
+    </th:block>
+
+    <tr><td colspan="3">&nbsp;</td></tr>
+    <tr><th colspan="3" th:text="#{ip.details.tm.section.applicant}"/></tr>
+    <th:block th:each="applicant: ${trademark.applicants}">
+        <tr>
+            <td>
+                <b th:if="${applicantStat.index == 0}">
+                    <span th:if="${trademark.registrationDate == null}">(731)</span>
+                    <span th:if="${trademark.registrationDate != null}">(732)</span>
+                </b>
+            </td>
+            <td width="300" th:text="#{ip.details.name}"/>
+            <td><strong>
+                <span th:style="${applicant.sanctionsApplied == true ? 'color: red' : ''}" th:text="${applicant.freeformName}"/>
+            </strong></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td width="300" th:text="#{ip.details.address}"/>
+            <td><strong>
+                <span th:style="${applicant.sanctionsApplied == true ? 'color: red' : ''}" th:text="${applicant.freeformAddress}"/>
+            </strong></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td width="300" th:text="#{ip.details.country}"/>
+            <td><strong><span th:style="${applicant.sanctionsApplied == true ? 'color: red' : ''}" th:text="${applicant.country}"/></strong></td>
+        </tr>
+    </th:block>
+
+    <th:block th:if="${trademark.displayApplicants750Field}" th:each="applicant: ${trademark.applicants}">
+        <tr>
+            <td><b th:if="${applicantStat.index == 0}">(750)</b></td>
+            <td width="300" th:text="#{ip.details.person.address.correspondence}"/>
+            <td><strong th:text="${applicant.freeformName}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td/>
+            <td><strong th:text="${applicant.freeformAddress750}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td/>
+            <td><strong th:text="${applicant.country750}"/></td>
+        </tr>
+    </th:block>
+
+    <th:block th:if="${trademark.representative != null}">
+        <tr>
+            <td colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+            <th colspan="3" th:text="#{ip.details.section.representative}"/>
+        </tr>
+
+        <tr>
+            <td><b>(740)</b></td>
+            <td width="300" th:text="#{ip.details.name}"/>
+            <td><strong th:text="${trademark.representative.freeformName}"/></td>
+        </tr>
+        <tr>
+            <td/>
+            <td width="300" th:text="#{ip.details.address}"/>
+            <td><strong th:text="${trademark.representative.freeformAddress}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td width="300" th:text="#{ip.details.country}"/>
+            <td><strong th:text="${trademark.representative.country}"/></td>
+        </tr>
+        <th:block th:if="${trademark.displayRepresentative750Field}">
+            <tr>
+                <td><b>(750)</b></td>
+                <td width="300" th:text="#{ip.details.person.address.correspondence}"/>
+                <td><strong th:text="${trademark.representative.freeformName}"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td/>
+                <td><strong th:text="${trademark.representative.freeformAddress750}"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td/>
+                <td><span th:text="${trademark.representative.country750}"/></td>
+            </tr>
+        </th:block>
+    </th:block>
+
+    <tr><td colspan="3">&nbsp;</td></tr>
+    <tr><th colspan="3" th:text="#{ip.details.tm.section.disclaimer}"/></tr>
+    <tr>
+        <td><b>(526)</b></td>
+        <td colspan="2"><strong><span th:text="${trademark.disclaimer}"/></strong></td>
+    </tr>
+
+    <tr><td colspan="3">&nbsp;</td></tr>
+    <tr><th colspan="3" th:text="#{ip.details.tm.section.exhibionpriority}"/></tr>
+    <th:block th:each="priority: ${trademark.exhibitionPriorities}">
+        <tr>
+            <td><span th:if="${priorityStat.index == 0}"><b>(230)</b></span></td>
+            <td th:text="#{ip.details.tm.exhibitionpriority}"/>
+            <td><strong><span th:text="${priority.date}"/> <span th:text="${priority.countryCode}"/></strong></td>
+        </tr>
+    </th:block>
+
+    <tr><td colspan="3">&nbsp;</td></tr>
+    <tr><th colspan="3" th:text="#{ip.details.tm.section.conventionpriority}"/></tr>
+
+    <th:block th:each="priority: ${trademark.priorities}">
+        <tr>
+            <td><span th:if="${priorityStat.index == 0}"><b>(300)</b></span></td>
+            <td th:text="#{ip.details.tm.section.conventionpriority}"/>
+            <td><strong><span th:text="${priority.number}"/></strong></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td th:text="#{ip.details.tm.conventionpriority.date}"/>
+            <td><strong><span th:text="${priority.date}"/></strong></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td th:text="#{ip.details.tm.conventionpriority.country}"/>
+            <td><strong><span th:text="${priority.countryCode}"/></strong></td>
+        </tr>
+    </th:block>
+
+    <div  th:if="${not #lists.isEmpty(trademark.prioritiesSovietUnion)}">
+        <tr><td colspan="3">&nbsp;</td></tr>
+        <tr><th colspan="3" th:text="#{ip.details.tm.section.internationalapplications.su.wo}"/></tr>
+        <tr>
+            <td><b>(646)</b></td>
+            <td th:text="#{ip.details.tm.internationalapplication}"/>
+            <td><strong>
+                <th:block th:each="prioritySovietUnion: ${trademark.prioritiesSovietUnion}">
+                    <span th:text="${prioritySovietUnion.number}"/>,
+                    <span th:text="${prioritySovietUnion.date}"/>,
+                    <span th:text="${prioritySovietUnion.countryCode}"/>,
+                    <span th:text="${prioritySovietUnion.bulletinNr}"/>
+                </th:block>
+            </strong></td>
+        </tr>
+    </div>
+
+    <div  th:if="${not #lists.isEmpty(trademark.earlierPriorities)}">
+        <tr><td colspan="3">&nbsp;</td></tr>
+        <tr><th colspan="3" th:text="#{ip.details.tm.section.internationalapplications}"/></tr>
+        <tr>
+            <td><b>(641)</b></td>
+            <td th:text="#{ip.details.tm.internationalapplication.earlier.application}"/>
+            <td><strong>
+                <th:block th:each="earlierPriorities: ${trademark.earlierPriorities}">
+                    <span th:text="${earlierPriorities.number}"/>,
+                    <span th:text="${earlierPriorities.date}"/>,
+                    <span th:text="${earlierPriorities.countryCode}"/>
+                </th:block>
+            </strong></td>
+        </tr>
+    </div>
+
+    <tr><td colspan="3">&nbsp;</td></tr></table>
+<div align="center">&nbsp;</div>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+status: 200
+content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+row: No | Design Title | Application No | Registration No | Class and subclass | Representation of the Design | No of design samples | Expire | Legal status
+row: 1.0 | AUTOMOBILIŲ ORO GAIVIKLIAI | 2025 032 | 2125 | 28.05 | 10.0 | 47798.0 | Registruotas

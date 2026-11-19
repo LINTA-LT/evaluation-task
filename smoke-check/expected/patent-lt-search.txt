@@ -1,0 +1,30 @@
+status: 200
+content-type: text/html
+link: /pdb/
+link: /pdb/patent/lt/search?lang=en
+link: /pdb/patent/lt/search?lang=lt
+link: /pdb/patent/lt/search-form
+link: /pdb/patent/export/xlsx/lt?lang=en
+text: Patent database
+text: EN
+text: |
+text: LT
+text: Patent database
+text: New search
+text: Search results
+text: (
+text: Found
+text: :
+text: 0
+text: )
+text: Updated
+text: :
+text: 2026-11-10
+text: Print
+text: Export to MS Excel
+text: No.
+text: Application number
+text: Number of the document
+text: Title
+text: Applicant
+text: Legal status

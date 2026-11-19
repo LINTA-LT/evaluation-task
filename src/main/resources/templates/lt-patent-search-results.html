@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{welcomepage.patents.lt.search}"/>
+
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+
+    <script th:src="@{/js/utilities.js}"></script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="row mb2">
+        <div class="col-md-7 col-sm-12" th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}">
+            <a th:href="@{/}">
+                <img th:src="@{/images/home-button-icon-6.png}" width="24px" height="24px" th:alt="#{common.homepage}">
+            </a>
+            <a class="lang-select" th:href="@{${urlBuilder.replaceQueryParam('lang', 'en').build().toUriString()}}">EN</a>
+            <span class="lang-select-separator"> | </span>
+            <a class="lang-select" th:href="@{${urlBuilder.replaceQueryParam('lang', 'lt').build().toUriString()}}">LT</a>
+        </div>
+    </div>
+
+    <div class="row mr-md-0 ml-md-0 d-red">
+        <h4 th:text="#{welcomepage.patents.lt.search}"/>
+    </div>
+
+    <div class="row top-row">
+        <div class='col-md-7 col-sm-12'>
+            <a th:href="@{/patent/lt/search-form}" th:text="#{common.newsearch}"/>
+        </div>
+        <div class='col-md-5 col-sm-12 search-rez-line'>
+            <span th:text="#{common.searchresult}"/>
+            <span style="color:#800000;">
+                <strong>(<span th:text="#{common.totalresults}"/>: <span th:text="${totalHits}"/>)</strong>
+            </span>
+            <div><span th:text="#{common.lastupdate}"/>: <span class="color_rez" th:text="${lastUpdated}"/></div>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-7 d-flex justify-content-start">
+            <span class="print" onClick="window.print(); return false;"><span th:text="#{common.print}"/> <img th:src="@{/images/print.png}" th:alt="#{common.print}"></span>
+        </div>
+        <div class="col-5 d-flex justify-content-end">
+            <a style="color: #afafaf; text-decoration: none;" th:with="queryString=${#request.getQueryString()}"
+               th:href="@{'/patent/export/xlsx/lt?' + ${queryString}}">
+                <span th:text="#{common.export.excel}"/>
+                <img th:src="@{/images/excel-icon-small.png}" width="24px" height="24px" th:alt="#{common.export.excel}">
+            </a>
+        </div>
+    </div>
+
+    <table class='table table-striped table-vpb'>
+        <tr>
+            <th th:text="#{patent.list.no}"/>
+            <th>
+                <span th:if="${isSpaResults}" th:text="#{patent.list.spanumber}" width="10%"/>
+                <span th:unless="${isSpaResults}" th:text="#{patent.list.applicationnumber}" width="10%"/>
+            </th>
+            <th th:text="#{patent.list.number}"/>
+            <th th:text="#{patent.list.title}"/>
+            <th th:text="#{patent.list.applicant}"/>
+            <th th:text="#{patent.list.status}"/>
+        </tr>
+        <tr th:each="patent: ${dossiers}">
+            <td><span
+                    th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+                    th:text="${(searchForm.offset + patentStat.index + 1)}"/>.
+            </td>
+            <td>
+                <a th:href="@{/patent/dossier/{number}(number=${patent.applicationNumber})}" onclick="openDetailsWindow(this.href); return false;">
+                    <img th:src="@{/images/cross.jpg}"/> <strong th:text="${patent.applicationNumber}"/>
+                </a>
+            </td>
+            <td valign="top">
+                <span th:if="${isSpaResults}" th:text="${patent.patentNumber}"/>
+                <span th:unless="${isSpaResults || patent.application}" th:text="${patent.number}"/>
+            </td>
+            <td>
+                <span th:if="${#locale.language == 'lt'}" th:text="${patent.titleLt}"/>
+                <span th:if="${#locale.language == 'en'}" th:text="${patent.titleEn}"/>
+            </td>
+            <td valign="top">
+                <th:block th:each="person: ${patent.applicants}">
+                    <span th:text="${person.freeformName}"/>, <span th:text="${person.country}"/><br/>
+                </th:block>
+            </td>
+            <td>
+                <span th:if="${#locale.language == 'lt'}" th:text="${patent.statusLt}"/>
+                <span th:if="${#locale.language == 'en'}" th:text="${patent.statusEn}"/>
+            </td>
+        </tr>
+    </table>
+
+
+    <th:block th:if="${(searchForm.offset - searchForm.size) >= 0}">
+        <a th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+           th:href="${urlBuilder.replaceQueryParam('offset', (searchForm.offset - searchForm.size)).build().toUriString()}"
+           class="btn btn-default btn-vpb" th:text="#{common.navigation.previous}"/>
+    </th:block>
+
+    <th:block th:if="${(searchForm.offset + searchForm.size) < totalHits}">
+        <a th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+           th:href="${urlBuilder.replaceQueryParam('offset', (searchForm.offset + searchForm.size)).build().toUriString()}"
+           class="btn btn-default btn-vpb" th:text="#{common.navigation.next}"/>
+    </th:block>
+
+</div>
+
+</body>
+</html>

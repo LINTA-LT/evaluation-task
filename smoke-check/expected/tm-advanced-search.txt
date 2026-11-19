@@ -1,0 +1,442 @@
+status: 200
+content-type: text/html
+link: /pdb/
+link: /pdb/trademark/advanced-search?f210=2025%203&amp;f210_mc=sw&amp;lang=en
+link: /pdb/trademark/advanced-search?f210=2025%203&amp;f210_mc=sw&amp;lang=lt
+link: /pdb/trademark/search-form
+link: /pdb/trademark/export/xlsx?f210=2025%203&amp;f210_mc=sw&amp;lang=en
+link: /pdb/trademark/advanced-search?f210=2025%203&amp;f210_mc=sw&amp;lang=en&amp;sortField=applicationnumber.keyword&amp;sortDir=asc&amp;offset=0
+link: /pdb/trademark/advanced-search?f210=2025%203&amp;f210_mc=sw&amp;lang=en&amp;sortField=applicationnumber.keyword&amp;sortDir=desc&amp;offset=0
+link: /pdb/trademark/advanced-search?f210=2025%203&amp;f210_mc=sw&amp;lang=en&amp;sortField=registrationnumber_numeric&amp;sortDir=asc&amp;offset=0
+link: /pdb/trademark/advanced-search?f210=2025%203&amp;f210_mc=sw&amp;lang=en&amp;sortField=registrationnumber_numeric&amp;sortDir=desc&amp;offset=0
+link: /pdb/trademark/advanced-search?f210=2025%203&amp;f210_mc=sw&amp;lang=en&amp;sortField=dtexpiry&amp;sortDir=asc&amp;offset=0
+link: /pdb/trademark/advanced-search?f210=2025%203&amp;f210_mc=sw&amp;lang=en&amp;sortField=dtexpiry&amp;sortDir=desc&amp;offset=0
+link: /pdb/trademark/advanced-search?f210=2025%203&amp;f210_mc=sw&amp;lang=en&amp;sortField=status_en.keyword&amp;sortDir=asc&amp;offset=0
+link: /pdb/trademark/advanced-search?f210=2025%203&amp;f210_mc=sw&amp;lang=en&amp;sortField=status_en.keyword&amp;sortDir=desc&amp;offset=0
+link: /pdb/trademark/details/2025%203273
+link: /pdb/trademark/details/2025%203272
+link: /pdb/trademark/details/2025%203271
+link: /pdb/trademark/details/2025%203270
+link: /pdb/trademark/details/2025%203269
+link: /pdb/trademark/details/2025%203267
+link: /pdb/trademark/details/2025%203266
+link: /pdb/trademark/details/2025%203265
+link: /pdb/trademark/details/2025%203264
+link: /pdb/trademark/details/2025%203263
+link: /pdb/trademark/details/2025%203262
+link: /pdb/trademark/details/2025%203261
+link: /pdb/trademark/details/2025%203260
+link: /pdb/trademark/details/2025%203259
+link: /pdb/trademark/details/2025%203258
+link: /pdb/trademark/details/2025%203257
+link: /pdb/trademark/details/2025%203256
+link: /pdb/trademark/details/2025%203255
+link: /pdb/trademark/details/2025%203254
+link: /pdb/trademark/details/2025%203253
+link: /pdb/trademark/details/2025%203252
+link: /pdb/trademark/details/2025%203251
+link: /pdb/trademark/details/2025%203250
+link: /pdb/trademark/details/2025%203249
+link: /pdb/trademark/details/2025%203248
+link: /pdb/trademark/details/2025%203247
+link: /pdb/trademark/details/2025%203246
+link: /pdb/trademark/details/2025%203245
+link: /pdb/trademark/details/2025%203244
+link: /pdb/trademark/details/2025%203242
+link: /pdb/trademark/details/2025%203241
+link: /pdb/trademark/details/2025%203240
+link: /pdb/trademark/details/2025%203239
+link: /pdb/trademark/details/2025%203238
+link: /pdb/trademark/details/2025%203237
+link: /pdb/trademark/details/2025%203236
+link: /pdb/trademark/details/2025%203235
+link: /pdb/trademark/details/2025%203233
+link: /pdb/trademark/details/2025%203232
+link: /pdb/trademark/details/2025%203231
+link: /pdb/trademark/details/2025%203230
+link: /pdb/trademark/details/2025%203229
+link: /pdb/trademark/details/2025%203228
+link: /pdb/trademark/details/2025%203227
+link: /pdb/trademark/details/2025%203226
+link: /pdb/trademark/details/2025%203225
+link: /pdb/trademark/details/2025%203224
+link: /pdb/trademark/details/2025%203223
+link: /pdb/trademark/details/2025%203222
+link: /pdb/trademark/details/2025%203221
+link: /pdb/trademark/advanced-search?f210=2025%203&amp;f210_mc=sw&amp;lang=en&amp;offset=50
+text: Trademark database
+text: EN
+text: |
+text: LT
+text: Trademark database
+text: New search
+text: Search results
+text: (
+text: Found
+text: :
+text: 260
+text: )
+text: Updated
+text: :
+text: 2026-11-09
+text: Print
+text: Export to MS Excel
+text: No
+text: Trade mark
+text: Trademark type
+text: Application No
+text: Registration No
+text: Graphic representation
+text: Nice class No
+text: Expire
+text: Legal status
+text: 1
+text: .
+text: EIMIN
+text: Figurative
+text: 2025 3273
+text: 16, 35, 41, 42
+text: Waiting for examination
+text: 2
+text: .
+text: VIČI
+text: Figurative
+text: 2025 3272
+text: 29, 30
+text: Waiting for examination
+text: 3
+text: .
+text: ShinSen
+text: Word
+text: 2025 3271
+text: 3
+text: Application filed
+text: 4
+text: .
+text: GoLocal
+text: Figurative
+text: 2025 3270
+text: 35, 41
+text: Waiting for examination
+text: 5
+text: .
+text: MOVE WELLNESS &amp; FITNESS STUDIO
+text: Figurative
+text: 2025 3269
+text: 41, 44
+text: Waiting for examination
+text: 6
+text: .
+text: REFRESH
+text: Figurative
+text: 2025 3267
+text: 41
+text: Examination OK (Application published)
+text: 7
+text: .
+text: RECOVERY ZONE
+text: Figurative
+text: 2025 3266
+text: 41
+text: Opposition pending
+text: 8
+text: .
+text: BODY &amp; MIND STUDIO
+text: Figurative
+text: 2025 3265
+text: 41
+text: Examination OK (Application published)
+text: 9
+text: .
+text: BOOTY ZONE
+text: Figurative
+text: 2025 3264
+text: 41
+text: Examination OK (Application published)
+text: 10
+text: .
+text: KAUNO MARATONAS
+text: Figurative
+text: 2025 3263
+text: 41
+text: Waiting for examination
+text: 11
+text: .
+text: Pino sodas
+text: Figurative
+text: 2025 3262
+text: 44
+text: Waiting for examination
+text: 12
+text: .
+text: Pino namai
+text: Figurative
+text: 2025 3261
+text: 35, 40
+text: Waiting for examination
+text: 13
+text: .
+text: eMokymai.lt
+text: Figurative
+text: 2025 3260
+text: 41
+text: Waiting for examination
+text: 14
+text: .
+text: Vilkmergės PREMIUM BARO
+text: Figurative
+text: 2025 3259
+text: 32
+text: Waiting for examination
+text: 15
+text: .
+text: ŠVOKISTAS
+text: Figurative
+text: 2025 3258
+text: 37
+text: Waiting for examination
+text: 16
+text: .
+text: Fohowkordicepsas
+text: Figurative
+text: 2025 3257
+text: 5
+text: Waiting for examination
+text: 17
+text: .
+text: Šampano klubas
+text: Figurative
+text: 2025 3256
+text: 35, 41
+text: Waiting for examination
+text: 18
+text: .
+text: MOKYKLĖLĖ
+text: Word
+text: 2025 3255
+text: 16
+text: Waiting for examination
+text: 19
+text: .
+text: Kerpita
+text: Figurative
+text: 2025 3254
+text: 11, 35
+text: Waiting for examination
+text: 20
+text: .
+text: Figurative
+text: 2025 3253
+text: 30
+text: Waiting for examination
+text: 21
+text: .
+text: KERPITA
+text: Word
+text: 2025 3252
+text: 11, 35
+text: Waiting for examination
+text: 22
+text: .
+text: Stasio Pakarklio IĮ
+text: Figurative
+text: 2025 3251
+text: 19, 37, 39
+text: Waiting for examination
+text: 23
+text: .
+text: Stasio Pakarklio IĮ
+text: Word
+text: 2025 3250
+text: 19, 37, 39
+text: Waiting for examination
+text: 24
+text: .
+text: Švarus plotas
+text: Word
+text: 2025 3249
+text: 37
+text: Waiting for examination
+text: 25
+text: .
+text: LAUHAUS
+text: Word
+text: 2025 3248
+text: 36, 37
+text: Waiting for examination
+text: 26
+text: .
+text: MAD MONKEYS VISUAL CREATIONS
+text: Figurative
+text: 2025 3247
+text: 35, 42
+text: Waiting for examination
+text: 27
+text: .
+text: CHANGAN
+text: Figurative
+text: 2025 3246
+text: 9, 12, 35, 37
+text: Waiting for examination
+text: 28
+text: .
+text: SPRITZERIA
+text: Word
+text: 2025 3245
+text: 43
+text: Waiting for examination
+text: 29
+text: .
+text: Kabukio kelionės
+text: Figurative
+text: 2025 3244
+text: 39, 41, 43
+text: Waiting for examination
+text: 30
+text: .
+text: Olfactory store
+text: Figurative
+text: 2025 3242
+text: 3, 35
+text: Waiting for examination
+text: 31
+text: .
+text: VIENO DRAUGO VYNINĖ
+text: Word
+text: 2025 3241
+text: 29, 30, 32, 33
+text: Waiting for examination
+text: 32
+text: .
+text: Zelto
+text: Word
+text: 2025 3240
+text: 9, 35, 42
+text: Waiting for examination
+text: 33
+text: .
+text: Kaimas į namus
+text: Word
+text: 2025 3239
+text: 35
+text: Waiting for examination
+text: 34
+text: .
+text: Nuspėjamai geras gyvenimas
+text: Word
+text: 2025 3238
+text: 36
+text: Waiting for examination
+text: 35
+text: .
+text: VILNIUS LIGHT FESTIVAL
+text: Figurative
+text: 2025 3237
+text: 41
+text: Waiting for examination
+text: 36
+text: .
+text: Gear Garage
+text: Figurative
+text: 2025 3236
+text: 37
+text: Waiting for examination
+text: 37
+text: .
+text: Top decor
+text: Figurative
+text: 2025 3235
+text: 19, 27, 37
+text: Waiting for examination
+text: 38
+text: .
+text: ZYMZYM
+text: Word
+text: 2025 3233
+text: 32
+text: Waiting for examination
+text: 39
+text: .
+text: BOSTIK FIXPRO
+text: Figurative
+text: 2025 3232
+text: 1, 17
+text: Waiting for examination
+text: 40
+text: .
+text: TURCER
+text: Word
+text: 2025 3231
+text: 5
+text: Waiting for examination
+text: 41
+text: .
+text: Robotex by sba home
+text: Figurative
+text: 2025 3230
+text: 37
+text: Waiting for examination
+text: 42
+text: .
+text: Motor House
+text: Figurative
+text: 2025 3229
+text: 12, 35
+text: Waiting for examination
+text: 43
+text: .
+text: Ažuolitos prekyba
+text: Figurative
+text: 2025 3228
+text: 35, 40
+text: Waiting for examination
+text: 44
+text: .
+text: NAYA
+text: Figurative
+text: 2025 3227
+text: 25, 27, 28, 35
+text: Withdrawn
+text: 45
+text: .
+text: Dičkis
+text: Word
+text: 2025 3226
+text: 35, 41
+text: Waiting for examination
+text: 46
+text: .
+text: Visa ŽolėTa
+text: Word
+text: 2025 3225
+text: 31, 41
+text: Waiting for examination
+text: 47
+text: .
+text: BORNEO GROŽIO IR TERAPIJOS STUDIJA
+text: Figurative
+text: 2025 3224
+text: 35, 44
+text: Waiting for examination
+text: 48
+text: .
+text: MAÈRA
+text: Figurative
+text: 2025 3223
+text: 25
+text: Waiting for examination
+text: 49
+text: .
+text: Saulėta virtuvė
+text: Word
+text: 2025 3222
+text: 35, 41, 43
+text: Examination OK (Application published)
+text: 50
+text: .
+text: papildų namai
+text: Figurative
+text: 2025 3221
+text: 35
+text: Waiting for examination
+text: Next &gt;&gt;

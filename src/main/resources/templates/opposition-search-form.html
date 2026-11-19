@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="#{dispute.opposition.searchform.windowtitle}"/>
+
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{/jquery-ui-1.12.1/jquery-ui.css}">
+    <link rel="stylesheet" th:href="@{/chosen_v1.8.7/chosen.css}">
+
+    <script th:src="@{/js/utilities.js}"></script>
+    <script th:src="@{/js/jquery-3.4.1.js}"></script>
+    <script th:src="@{/jquery-ui-1.12.1/jquery-ui.min.js}"></script>
+    <script th:src="@{/chosen_v1.8.7/chosen.jquery.js}"></script>
+    <script th:src="@{/jquery-ui-1.12.1/datepicker-lt.js}"></script>
+
+
+    <script th:inline="javascript">
+        //locale language "lt" or "en" for the calendar
+        var locale = [[${#locale.language}]];
+    </script>
+    <script>
+        $( function() {
+            $( "[data-type='datepicker']").datepicker(
+                {
+                    constrainInput: true,
+                    dateFormat: "yy/mm/dd",
+                    firstDay: 1
+                }
+            );
+            $(".chosen-select").chosen({
+                disable_search: true,
+                placeholder_text_multiple: "[[#{common.select.multiple}]]",
+
+            });
+
+            $( "#grounds_version" ).change(function(e){
+                selectedVersion = $( "#grounds_version" ).select().val();
+                console.log(selectedVersion);
+                if(selectedVersion == 2000){
+                    var selectElement = $("#grounds").empty();
+                    grounds2000.forEach(elem => {
+                        $("#grounds").append(new Option(elem.label, elem.value));
+                    });
+                    $("#grounds").trigger("chosen:updated");
+                } else if(selectedVersion == 2018){
+                    var selectElement = $("#grounds").empty();
+                    grounds2018.forEach(elem => {
+                        $("#grounds").append(new Option(elem.label, elem.value));
+                    });
+                    $("#grounds").trigger("chosen:updated");
+                }
+            });
+            $( "#grounds_version" ).trigger("change");
+        } );
+        $.datepicker.setDefaults( $.datepicker.regional[ locale ] );
+
+        var grounds2000 = [
+            {"value" : "6.1.1", "label" : "[[#{dispute.common.grounds.article.6.1.1.label}]]"},
+            {"value" : "6.1.2", "label" : "[[#{dispute.common.grounds.article.6.1.2.label}]]"},
+            {"value" : "6.1.3", "label" : "[[#{dispute.common.grounds.article.6.1.3.label}]]"},
+            {"value" : "6.1.4", "label" : "[[#{dispute.common.grounds.article.6.1.4.label}]]"},
+            {"value" : "6.1.5", "label" : "[[#{dispute.common.grounds.article.6.1.5.label}]]"},
+            {"value" : "6.1.6", "label" : "[[#{dispute.common.grounds.article.6.1.6.label}]]"},
+            {"value" : "6.1.7", "label" : "[[#{dispute.common.grounds.article.6.1.7.label}]]"},
+            {"value" : "6.1.8", "label" : "[[#{dispute.common.grounds.article.6.1.8.label}]]"},
+            {"value" : "6.1.9", "label" : "[[#{dispute.common.grounds.article.6.1.9.label}]]"},
+            {"value" : "6.1.10", "label" : "[[#{dispute.common.grounds.article.6.1.10.label}]]"},
+            {"value" : "6.1.11", "label" : "[[#{dispute.common.grounds.article.6.1.11.label}]]"},
+            {"value" : "6.1.12", "label" : "[[#{dispute.common.grounds.article.6.1.12.label}]]"},
+            {"value" : "6.2", "label" : "[[#{dispute.common.grounds.article.6.2.label}]]"},
+            {"value" : "7.1.1", "label" : "[[#{dispute.common.grounds.article.7.1.1.label}]]"},
+            {"value" : "7.1.2", "label" : "[[#{dispute.common.grounds.article.7.1.2.label}]]"},
+            {"value" : "7.1.3", "label" : "[[#{dispute.common.grounds.article.7.1.3.label}]]"},
+            {"value" : "7.1.4", "label" : "[[#{dispute.common.grounds.article.7.1.4.label}]]"},
+            {"value" : "7.1.5", "label" : "[[#{dispute.common.grounds.article.7.1.5.label}]]"},
+            {"value" : "7.1.6", "label" : "[[#{dispute.common.grounds.article.7.1.6.label}]]"},
+            {"value" : "7.1.7", "label" : "[[#{dispute.common.grounds.article.7.1.7.label}]]"},
+            {"value" : "7.1.8", "label" : "[[#{dispute.common.grounds.article.7.1.8.label}]]"},
+            {"value" : "7.3", "label" : "[[#{dispute.common.grounds.article.7.3.label}]]"}
+        ];
+
+        var grounds2018 = [
+            {"value" : "8.1.1", "label" : "[[#{dispute.common.grounds.article.8.1.1.label}]]"},
+            {"value" : "8.1.2", "label" : "[[#{dispute.common.grounds.article.8.1.2.label}]]"},
+            {"value" : "8.1.3", "label" : "[[#{dispute.common.grounds.article.8.1.3.label}]]"},
+            {"value" : "8.1.4", "label" : "[[#{dispute.common.grounds.article.8.1.4.label}]]"},
+            {"value" : "8.1.5(a)", "label" : "[[#{dispute.common.grounds.article.8.1.5.a.label}]]"},
+            {"value" : "8.1.5(b)", "label" : "[[#{dispute.common.grounds.article.8.1.5.b.label}]]"},
+            {"value" : "8.1.5(c)", "label" : "[[#{dispute.common.grounds.article.8.1.5.c.label}]]"},
+            {"value" : "8.1.5(d)", "label" : "[[#{dispute.common.grounds.article.8.1.5.d.label}]]"},
+            {"value" : "8.3", "label" : "[[#{dispute.common.grounds.article.8.3.label}]]"}
+        ];
+    </script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="row mb2">
+        <div class="col-md-7 col-sm-12">
+            <a th:href="@{/}">
+                <img th:src="@{/images/home-button-icon-6.png}" width="24px" height="24px" th:alt="#{common.homepage}">
+            </a>
+            <a class="lang-select" th:href="@{''(lang='en')}">EN</a>
+            <span class="lang-select-separator"> | </span>
+            <a class="lang-select" th:href="@{''(lang='lt')}">LT</a>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-12 d-flex justify-content-end">
+            <p><span class="mr-1"><span th:text="#{common.lastupdate}"/>: </span>
+                <span class='color_rez'><span class="color_rez" th:text="${lastUpdated}"/></span></p>
+        </div>
+    </div>
+
+    <form class="form-vpb form-inline" method="get" th:action="@{/dispute/{disputeType}/search(disputeType=${searchForm.type})}">
+
+        <div class="form-group row mr-md-0 ml-md-0 d-red">
+            <h4 th:text="#{welcomepage.oppositions.search}"/>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+
+            <div class="col-md-3 offset-md-1 label-group">
+                <label for="refapplicationnumber_mc" th:text="#{dispute.opposition.searchform.oppositionnumber}"/>
+            </div>
+
+            <div class="col-md-3">
+                <select id="refapplicationnumber_mc" class="form-control" name="refapplicationnumber_mc">
+                    <option selected="selected" value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="refapplicationnumber" maxlength="8"/>
+            </div>
+
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/tm-help.html#opposinr}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+
+        </div>
+
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+
+            <div class="col-md-3 offset-md-1 label-group">
+                <label for="date_from" th:text="#{dispute.opposition.searchform.decisiondate}"/>
+            </div>
+
+            <div class="col-md-2">
+                <input id="date_from" data-type="datepicker" placeholder="yyyy/mm/dd" class="form-control" name="date_from"/>
+            </div>
+            <div class="col-md-1">
+            </div>
+
+            <div class="col-md-2">
+                <input data-type="datepicker" placeholder="yyyy/mm/dd" class="form-control" name="date_to"/>
+            </div>
+            <div class="col-md-1 mr-down">
+            </div>
+
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/tm-help.html#dtdecision}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+
+        </div>
+
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+
+            <div class="col-md-3 offset-md-1 label-group">
+                <label for="decision_number_mc" th:text="#{dispute.opposition.searchform.decisionnumber}"/>
+            </div>
+
+            <div class="col-md-3">
+                <select class="form-control" id="decision_number_mc" name="decision_number_mc">
+                    <option value="has" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                     <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                    <option selected="selected" value="eq" th:text="#{common.dropdown.option.equals}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="decision_number" size="30" maxlength="15">
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/tm-help.html#decisnr}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+
+        </div>
+
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 offset-md-1 label-group">
+                <label for="f540_mc" th:text="#{dispute.opposition.searchform.contestedtrademark}"/>
+            </div>
+
+            <div class="col-md-3">
+                <select id="f540_mc" class="form-control" name="f540_mc">
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                     <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f540" maxlength="128">
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/tm-help.html#540}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+        </div>
+
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+
+            <div class="col-md-3 offset-md-1 label-group">
+                <label for="f111_mc" th:text="#{dispute.opposition.searchform.registrationnumber}"/>
+            </div>
+
+            <div class="col-md-3">
+                <select id="f111_mc" class="form-control" name="f111_mc">
+                    <option value="has" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                     <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                    <option selected="selected" value="eq" th:text="#{common.dropdown.option.equals}"/>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f111" maxlength="15">
+            </div>
+
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/tm-help.html#111}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+
+            <div class="col-md-3 offset-md-1 label-group">
+                <label for="f210_mc" th:text="#{dispute.opposition.searchform.applicationnumber}"/>
+            </div>
+
+            <div class="col-md-3">
+                <select id="f210_mc" class="form-control" name="f210_mc">
+                    <option value="has" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                     <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                    <option selected="selected" value="eq" th:text="#{common.dropdown.option.equals}"/>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f210" maxlength="15">
+            </div>
+
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/tm-help.html#210}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 offset-md-1 label-group">
+                <label for="f511_mc" th:text="#{dispute.opposition.searchform.niceclasses}"/>
+            </div>
+
+            <div class="col-md-3 mr-down">
+                <select id="f511_mc" class="form-control" name="f511_mc" disabled="true">
+                    <option selected="selected" value="eq" th:text="#{common.dropdown.option.equals}"/>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <select size="6" name="f511" class="form-control chosen-select" multiple="multiple">
+                    <option th:each="i : ${#numbers.sequence( 1, 45)}" th:value="${i}" th:text="${i}">
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row mr-0 ml-md-0 zebra">
+
+            <div class="col-md-3 offset-md-1 label-group">
+                <label for="grounds_mc" th:text="#{dispute.opposition.searchform.grounds}"/>
+            </div>
+
+            <div class="col-md-3 mr-down">
+                <select id="grounds_version" class="form-control" name="grounds_version">
+                    <option selected="selected" style="color: green;" th:text="#{dispute.common.grounds.regulation.2018.label}" value="2018"/>
+                    <option style="color: red;" th:text="#{dispute.common.grounds.regulation.2000.label}" value="2000"/>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+
+                <select class="form-control chosen-select" multiple="multiple" name="grounds" id="grounds"></select>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+
+            <div class="col-md-3 offset-md-1 label-group">
+                <label for="decision_mc" th:text="#{dispute.opposition.searchform.decision}"/>
+            </div>
+
+            <div class="col-md-3 mr-down">
+                <select id="decision_mc" class="form-control" name="decision_mc" disabled="true">
+                    <option selected="selected" value="eq" th:text="#{common.dropdown.option.equals}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-control" name="decision">
+                    <option value="" th:text="#{common.dropdown.label.all}"/>
+                    <option value="granted" th:title="#{dispute.opposition.decision.granted}" th:text="#{dispute.opposition.decision.granted}"/>
+                    <option value="partially_granted" th:title="#{dispute.opposition.decision.partially_granted}" th:text="#{dispute.opposition.decision.partially_granted}"/>
+                    <option value="rejected" th:title="#{dispute.opposition.decision.rejected}" th:text="#{dispute.opposition.decision.rejected}"/>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+
+            <div class="col-md-3 offset-md-1 label-group">
+                <label for="comments_mc" th:text="#{dispute.opposition.searchform.text}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="comments_mc" class="form-control" name="comments_mc">
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                     <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="comments" maxlength="128">
+            </div>
+
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/tm-help.html#descdecision}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0">
+            <div class="col-md-8 offset-md-2 col-sm-12 offset-sm-0 extend-search-vpb">
+                <input class="btn btn-primary btn-vpb" type="submit" th:value="#{common.searchform.submit}"/>
+                <input class="btn btn-primary btn-vpb" type="reset" th:value="#{common.searchform.reset}"/>
+            </div>
+        </div>
+
+    </form>
+
+
+</div>
+
+</body>
+</html>

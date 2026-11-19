@@ -1,0 +1,115 @@
+body { background-color: #ffffff; margin: 20px }
+body, table { font-family: Verdana, Geneva, Arial, Helvetica, sans-serif }
+
+div#info_atnaujinta { font-size: xx-small; text-align: right; margin-top: 2px }
+
+div#bd_title {
+	font-size: 13px;
+	font-weight: bold;
+	letter-spacing: 0.2ex;
+	margin: 10px 20px;
+}
+
+div.menu_1 {
+	background-color: #fafad2;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 6px 10px;
+	border-bottom: 1px solid #708090;
+	border-top: 1px solid #708090;
+	text-align: right;
+	margin: 10px 0px;
+}
+div.menu_1 { color: #c0c0c0 }
+div.menu_1 span.pap { color: #708090 }
+div.menu_1 a { color: #191970 }
+div.menu_1 a { text-decoration: underline; }
+div.menu_1 a:hover { color: #b22222; text-decoration: overline }
+
+table.datablock {
+	background-color: #f5f5f5;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #708090;
+	border-left: 1px solid #708090;
+	border-right: 1px solid #708090;
+	width: 100%;
+}
+
+table.datablock caption {
+	color: #2f4f4f;
+	background-color: #d3d3d3;
+	border-top: 2px solid #708090;
+	border-left: 1px solid #708090;
+	border-right: 1px solid #708090;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 6px 16px;
+	text-align: left;
+}
+
+table.datablock td {
+	padding: 6px;
+	vertical-align: top;
+	font-size: 12px;
+}
+
+table.datablock td.num {
+	font-weight: bold;
+	padding-right: 20px;
+	width: 30px;
+}
+
+table.datablock td.var {
+	color: #2f4f4f;
+	border-bottom: 1px dashed #708090;
+	width: 60%;
+}
+
+table.datablock td.var1 {
+    font-weight: bold;
+	border-bottom: 1px dashed #708090;
+	width: 60%;
+}
+
+table.datablock td.val {
+	font-weight: bold;
+	border-bottom: 1px dashed #708090;
+	width: 100%;
+}
+
+table.datablock td.val1 {
+	border-bottom: 1px dashed #708090;
+	width: 15%;
+}
+
+table.datablock td.val2 {
+	border-bottom: 1px dashed #708090;
+	width: 100%;
+}
+
+table.datablock td.value {
+	font-weight: bold;
+}
+
+table.datablock td.value-em {
+	font-weight: bold;
+	font-style: italic;
+}
+
+table.datablock td.value-italic {
+	font-style: italic;
+}
+
+table.datablock td.dashed-under {
+	border-bottom: 1px dashed #708090;
+}
+
+div.footer table {
+	/*margin: 10px;
+	margin-top: 0px;
+	padding: 10px;*/
+	font-size: 11px;
+	color: #333333;
+	text-align: center;	
+}

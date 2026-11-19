@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+    <title th:text="#{ip.details.ds.windowtitle}"/>
+
+    <link rel="stylesheet" th:href="@{/details1.css}">
+    <link rel="stylesheet" th:href="@{/details2.css}">
+
+    <script th:src="@{/js/utilities.js}"></script>
+
+    <script type="text/javascript">
+        <!--
+        function expandSampleImages(divId) {
+            document.getElementById(divId).style.display='block';
+        }
+        function collapseSampleImages(divId) {
+            document.getElementById(divId).style.display='none';
+        }
+
+        // -->
+    </script>
+
+</head>
+
+<body>
+
+<div>
+    <span class="print print-details" style="margin-left: 22px;" onclick="window.print(); return false;"><img th:src="@{/images/print.png}" th:alt="#{common.print}"></span>
+    <span>
+        <a th:href="@{''(lang='en')}">EN</a>
+        <span > | </span>
+        <a th:href="@{''(lang='lt')}">LT</a>
+    </span>
+</div>
+<table cellspacing="4" align="center" width="95%">
+    <tr>
+        <td colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+        <td><b>(54)</b></td>
+        <td colspan=2>
+            <h3 align="center"><strong><span th:text="${design.productIndication}"/></strong></h3>
+        </td>
+    </tr>
+
+    <tr>
+        <th colspan="3" th:text="#{ip.details.ds.section.main}"/>
+    </tr>
+
+    <tr>
+        <td><b>(21)</b></td>
+        <td width="300" th:text="#{ip.details.applicationnumber}"/>
+        <td><strong><span th:text="${design.applicationNumber}"/></strong></td>
+    </tr>
+
+    <tr>
+        <td><b>(22)</b></td>
+        <td width="300" th:text="#{ip.details.applicationdate}"/>
+        <td><strong><span th:text="${design.filingDate}"/></strong></td>
+    </tr>
+
+    <tr>
+        <td><b>(11)</b></td>
+        <td width="300" th:text="#{ip.details.registrationnumber}"/>
+        <td><strong><span th:text="${design.registrationNumber}"/></strong></td>
+    </tr>
+
+    <tr>
+        <td><b>(15)</b></td>
+        <td width="300" th:text="#{ip.details.registrationdate}"/>
+        <td><strong><span th:text="${design.registrationDate}"/></strong></td>
+    </tr>
+
+    <tr>
+        <td><b>(18)</b></td>
+        <td width="300" th:text="#{ip.details.expirydate}"/>
+        <td><strong><span th:text="${design.expires}"/></strong></td>
+    </tr>
+
+    <tr>
+        <td><b>(45)</b></td>
+        <td width="300" th:text="#{ip.details.regpubdate}"/>
+        </td>
+        <td><strong th:unless="${design.publicationDate == null}">
+                <span th:text="${design.publicationDate}"/>, <span th:text="${design.bulletinNo}"/>
+            </strong>
+        </td>
+    </tr>
+
+    <tr>
+        <td/>
+        <td th:text="#{ip.details.status}"/>
+        <td><strong>
+                <span th:if="${#locale.language == 'lt'}" th:text="${design.statusLt}"/>
+                <span th:if="${#locale.language == 'en'}" th:text="${design.statusEn}"/>
+                <div th:if="${design.indRightsPledged}" th:text="#{ip.details.ds.indrightspledged}"/>
+                <div th:if="${design.indRightsArrested}" th:text="#{ip.details.ds.indrightsarrested}"/>
+            </strong>
+        </td>
+        <td/>
+        <td/>
+    </tr>
+
+    <th:block th:if="${design.sanctionsApplied}">
+        <tr>
+            <td></td>
+            <td></td>
+            <td><div style="color: red" th:text="#{ip.details.ds.sanctionsapplied}"/></td>
+        </tr>
+    </th:block>
+
+    <tr><td colspan="3">&nbsp;</td></tr>
+    <tr><th colspan="3" th:text="#{ip.details.ds.section.convention.priority}"/></tr>
+
+    <th:block th:each="priority: ${design.getConventionPriorities()}">
+        <tr>
+            <td><span th:if="${priorityStat.index == 0}"><b>(33)</b></span></td>
+            <td th:text="#{ip.details.ds.section.convention.priority}"/>
+            <td><strong><span th:text="${priority.number}"/></strong></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td th:text="#{ip.details.tm.conventionpriority.date}"/>
+            <td><strong><span th:text="${priority.date}"/></strong></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td th:text="#{ip.details.tm.conventionpriority.country}"/>
+            <td><strong><span th:text="${priority.countryCode}"/></strong></td>
+        </tr>
+    </th:block>
+
+    <tr><td colspan="3">&nbsp;</td></tr>
+    <tr>
+        <th colspan="3" th:text="#{ip.details.ds.section.applicant}"/>
+    </tr>
+
+    <th:block th:each="applicant: ${design.applicants}">
+        <tr>
+            <td><b>(73)</b></td>
+            <td width="300" th:text="#{ip.details.name}"/>
+            <td><strong th:style="${applicant.sanctionsApplied == true ? 'color: red' : ''}" th:text="${applicant.freeformName}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td width="300" th:text="#{ip.details.address}"/>
+            <td><strong th:style="${applicant.sanctionsApplied == true ? 'color: red' : ''}" th:text="${applicant.freeformAddress}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td width="300" th:text="#{ip.details.country}"/>
+            <td><strong th:style="${applicant.sanctionsApplied == true ? 'color: red' : ''}" th:text="${applicant.country}"/></td>
+        </tr>
+    </th:block>
+
+    <th:block th:if="${design.displayApplicants750Field}" th:each="applicant: ${design.applicants}">
+        <tr>
+            <td/>
+            <td width="300" th:text="#{ip.details.person.address.correspondence}"/>
+            <td><strong th:style="${applicant.sanctionsApplied == true ? 'color: red' : ''}" th:text="${applicant.freeformName}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td/>
+            <td><strong th:style="${applicant.sanctionsApplied == true ? 'color: red' : ''}" th:text="${applicant.freeformAddress750}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td/>
+            <td><strong th:style="${applicant.sanctionsApplied == true ? 'color: red' : ''}" th:text="${applicant.country750}"/></td>
+        </tr>
+    </th:block>
+
+    <th:block th:if="${design.representative != null}">
+        <tr>
+            <td colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+            <th colspan="3" th:text="#{ip.details.section.representative}"/>
+        </tr>
+        <tr>
+            <td><b>(74)</b></td>
+            <td width="300" th:text="#{ip.details.name}"/>
+            <td><strong th:text="${design.representative.freeformName}"/></td>
+        </tr>
+        <tr>
+            <td/>
+            <td width="300" th:text="#{ip.details.address}"/>
+            <td><strong th:text="${design.representative.freeformAddress}"/></td>
+        </tr>
+        <tr>
+            <td/>
+            <td width="300" th:text="#{ip.details.country}"/>
+            <td><strong th:text="${design.representative.country}"/></td>
+        </tr>
+        <th:block th:if="${design.displayRepresentative750Field}">
+            <tr>
+                <td/>
+                <td width="300" th:text="#{ip.details.person.address.correspondence}"/>
+                <td><strong th:text="${design.representative.freeformName}"/></td>
+            </tr>
+            <tr>
+                <td/>
+                <td/>
+                <td><strong th:text="${design.representative.freeformAddress750}"/></td>
+            </tr>
+            <tr>
+                <td/>
+                <td/>
+                <td><span th:text="${design.representative.country750}"/></td>
+            </tr>
+        </th:block>
+    </th:block>
+
+
+    <tr>
+        <td colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+        <th colspan="3" th:text="#{ip.details.ds.section.graphics}"/>
+    </tr>
+    <tr>
+        <td><b>(28)</b></td>
+        <td width="300" th:text="#{ip.details.ds.noofsamples}"/>
+        <td><strong th:text="${design.noOfSamples}"/></td>
+    </tr>
+
+    <tr>
+        <td><b>(55)</b></td>
+        <td colspan="2"><strong></strong>
+        </td>
+    </tr>
+</table>
+
+<table cellspacing="4" align="left">
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+        <th:block th:each="sample: ${design.samples}">
+            <td valign="top" width="190px;">
+                <!-- only one image for the sample -->
+                <th:block th:if="${sample.images.size() == 1}">
+                    <span th:text="${sample.designIdentifier}"/>.
+                    <br>
+                    <a th:href="@{/design/image/{designImageSt13}(designImageSt13=${sample.images.get(0)})}" onclick="openImageWindow(this.href); return false;">
+                        <img border="0" style="max-height: 150px; border: 1px dashed #cccccc;"
+                             th:src="@{'/design/image/' + ${sample.images.get(0)}}"/>
+                    </a>
+                </th:block>
+                <!-- multiple images for the sample -->
+                <th:block th:unless="${sample.images.size() == 1}" th:each="image: ${sample.images}">
+                    <!-- first image of the sample -->
+                    <th:block th:if="${imageStat.index == 0}">
+                        <span th:text="${sample.designIdentifier}"/>.<span th:text="${(imageStat.index + 1)}"/>.
+                        <br>
+                        <a th:href="@{/design/image/{designImageSt13}(designImageSt13=${image})}" onclick="openImageWindow(this.href); return false;">
+                            <img border="0" style="max-height: 150px; border: 1px dashed #cccccc;"
+                                 th:src="@{'/design/image/' + ${image}}"/>
+                        </a>
+                        <br>
+                        <div>
+                            <a href="javascript:void(0)" th:attr="onclick=|expandSampleImages('${'sample_' + sample.designIdentifier}')|">
+                                <img th:src="@{/images/plus.gif}" width="15" height="15" hspace="1" vspace="0" border="0" th:alt="#{ip.details.ds.showallimages}">
+                            </a>&nbsp;
+                            <a href="javascript:void(0)" th:attr="onclick=|collapseSampleImages('${'sample_' + sample.designIdentifier}')|">
+                                <img th:src="@{/images/minus.gif}" width="15" height="15" hspace="1" vspace="0" border="0" th:alt="#{common.close}">
+                            </a>
+                        </div>
+                    </th:block>
+                    <!-- opening div wrapping the rest images of the sample -->
+                    <th:block th:if="${imageStat.index == 1}">
+                        <div style="display: none;" class="box" th:id="${'sample_' + sample.designIdentifier}"/>
+                    </th:block>
+                    <!-- each of the rest images of the sample -->
+                    <th:block th:unless="${imageStat.index == 0}">
+                        <span th:text="${sample.designIdentifier}"/>.<span th:text="${(imageStat.index + 1)}">.</span><br>
+                        <a th:href="@{/design/image/{designImageSt13}(designImageSt13=${image})}" onclick="openImageWindow(this.href); return false;">
+                            <img border="0" style="max-height: 150px; max-width: 150px; border: 1px dashed #cccccc;"
+                                 th:src="@{'/design/image/' + ${image}}"/>
+                        </a>
+                        <br>
+                    </th:block>
+                    <!-- closing div wrapping the rest images of the sample -->
+                    <th:block th:if="${imageStat.last}">
+                        </div>
+                    </th:block>
+
+                </th:block>
+            </td>
+        </th:block>
+    </tr>
+</table>
+
+
+</body>
+
+</html>

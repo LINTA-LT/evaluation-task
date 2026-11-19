@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{welcomepage.opendata.tm.main}"/>
+
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+
+    <script th:src="@{/js/utilities.js}"></script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="row mb2">
+        <div class="col-md-7 col-sm-12">
+            <a th:href="@{/}">
+                <img th:src="@{/images/home-button-icon-6.png}" width="24px" height="24px" th:alt="#{common.homepage}">
+            </a>
+            <a class="lang-select" th:href="@{''(lang='en')}">EN</a>
+            <span class="lang-select-separator"> | </span>
+            <a class="lang-select" th:href="@{''(lang='lt')}">LT</a>
+        </div>
+    </div>
+
+    <div class="row mr-md-0 ml-md-0 d-red">
+        <h4 th:text="#{welcomepage.opendata.tm.main}"/>
+    </div>
+
+    <div class="row top-row">
+        <div class='col-md-7 col-sm-12'>
+
+        </div>
+        <div class='col-md-5 col-sm-12 search-rez-line'>
+            <span />
+            <span style="color:#800000;">
+                <strong></strong>
+            </span>
+            <div></div>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-7 d-flex justify-content-start">
+
+        </div>
+        <div class="col-5 d-flex justify-content-end">
+        </div>
+    </div>
+
+    <table class="table table-striped table-vpb" style="max-width: 800px;" align="center">
+        <tr>
+            <th th:text="#{opendata.list.xmlschemas}"/>
+        </tr>
+        <tr>
+            <td>
+                <a th:href="@{/opendata/xsd/trademark-v1-1.xsd}">trademark-v1-1.xsd</a><br/>
+                <a th:href="@{/opendata/xsd/trademark-v1-2.xsd}">trademark-v1-2.xsd</a><br/>
+                <a th:href="@{/opendata/xsd/address-v1-1.xsd}">address-v1-1.xsd</a><br/>
+                <a th:href="@{/opendata/xsd/iso639-language-code-v1.xsd}">iso639-language-code-v1.xsd</a><br/>
+                <a th:href="@{/opendata/xsd/iso3166-1-extended-country-code-v1-1.xsd}">iso3166-1-extended-country-code-v1-1.xsd</a><br/>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table table-striped table-vpb" style="max-width: 800px;" align="center">
+        <tr>
+            <th th:text="#{opendata.list.month}"/>
+            <th th:text="#{opendata.list.files}"/>
+        </tr>
+        <tr th:each="monthData: ${monthlyData}">
+            <td th:text="${monthData.yearMonth}"/>
+            <td>
+                <th:block th:each="file: ${monthData.trademarkFiles}">
+                    <a th:href="@{/opendata/files/{name}(name=${file.fileName})}">
+                        <strong th:text="${file.fileName}"/><br/>
+                    </a>
+                </th:block>
+            </td>
+        </tr>
+        <tr th:if="${fullData != null}">
+            <td>
+                <span th:text="#{opendata.list.fullExport}"/>
+                <span th:text="${fullData.yearMonth}"/>
+            </td>
+            <td>
+                <th:block th:each="file: ${fullData.trademarkFiles}">
+                    <a th:href="@{/opendata/file/{name}(name=${file.fileName})}">
+                        <strong th:text="${file.fileName}"/><br/>
+                    </a>
+                </th:block>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+status: 200
+content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+row: No | Trade mark | Trademark type | Application No | Registration No | Graphic representation | Nice class No | Expire | Legal status
+row: 1.0 | Unicamp | Word | 2024 2682 |  | 41 |  | Neregistruotinas ženklas 1
+row: 2.0 | iCamp! TES | Combined | 2024 1274 | 92171 | 41 | 49111.0 | Registruotas
+row: 3.0 | iCamp! TES | Word | 2024 1257 | 94973 | 41 | 49108.0 | Registruotas
+row: 4.0 | iCamp! tarptautinė edukacinė stovykla | Word | 2024 0278 |  | 41 |  | Neregistruotinas ženklas 1
+row: 5.0 | iCAMP AMES | Word | 2023 0993 | 89747 | 41 | 48744.0 | Registruotas
+row: 6.0 | iCamp! | Word | 2023 0690 |  | 43 |  | Neregistruotinas ženklas 1

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{welcomepage.patents.lt.search}"/>
+
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{/jquery-ui-1.12.1/jquery-ui.css}">
+
+    <script th:src="@{/js/utilities.js}"></script>
+    <script th:src="@{/js/jquery-3.4.1.js}"></script>
+    <script th:src="@{/jquery-ui-1.12.1/jquery-ui.min.js}"></script>
+    <script th:src="@{/jquery-ui-1.12.1/datepicker-lt.js}"></script>
+    <script th:inline="javascript">
+        //locale language "lt" or "en" for the calendar
+        var locale = [[${#locale.language}]];
+    </script>
+    <script>
+        $( function() {
+            $( "[data-type='datepicker']").datepicker(
+                {
+                    constrainInput: true,
+                    dateFormat: "yy/mm/dd",
+                    firstDay: 1
+                }
+            );
+        } );
+        $.datepicker.setDefaults( $.datepicker.regional[ locale ] );
+    </script>
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+
+    <div class="row mb2">
+        <div class="col-md-7 col-sm-12">
+            <a th:href="@{/}">
+                <img th:src="@{/images/home-button-icon-6.png}" width="24px" height="24px" th:alt="#{common.homepage}">
+            </a>
+            <a class="lang-select" th:href="@{''(lang='en')}">EN</a>
+            <span class="lang-select-separator"> | </span>
+            <a class="lang-select" th:href="@{''(lang='lt')}">LT</a>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-12 d-flex justify-content-end">
+            <p>
+                <span class="mr-1"><span th:text="#{common.lastupdate}"/>: </span>
+                <span class='color_rez'><span class="color_rez" th:text="${lastUpdated}"/></span>
+            </p>
+        </div>
+    </div>
+
+    <form class="form-vpb form-inline" th:action="@{/patent/lt/text-search}" method="get" th:object="${searchForm}">
+
+        <div class="form-group row mr-md-0 ml-md-0 d-red">
+            <h4 th:text="#{welcomepage.patents.lt.search}"/>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 d-red">
+            <h4 th:text="#{common.searchform.title}"/>
+        </div>
+
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f11_mc">
+                    <strong>(11)</strong> <span th:text="#{patent.searchform.number}"/>
+                </label>
+            </div>
+            <div class="col-md-3">
+                <select id="f11_mc" class="form-control" name="f11_mc">
+                    <option value="eq" th:selected="${searchForm.f11_mc != null ? searchForm.f11_mc.value == 'eq' : false}" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" th:selected="${searchForm.f11_mc != null ? searchForm.f11_mc.value == 'has' : true}" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:selected="${searchForm.f11_mc != null ? searchForm.f11_mc.value == 'sw' : false}" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:selected="${searchForm.f11_mc != null ? searchForm.f11_mc.value == 'ew' : false}" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f11" maxlength="128" th:value="*{f11}">
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#11}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+        </div>
+
+
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 offset-md-1 label-group">
+                <strong>(57)</strong> <span th:text="#{patent.searchform.words.in.specification}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="f57_mc" class="form-control" name="f57_mc">
+                    <option value="any" selected="selected" th:text="#{common.dropdown.option.contains-any}"/>
+                    <option value="all" th:text="#{common.dropdown.option.contains-all}"/>
+                    <option value="has" th:text="#{common.dropdown.option.contains-phrase}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f57" maxlength="50">
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#57}');|"><img border="0" th:src="@{/images/questionmark.gif}"></a>
+            </div>
+        </div>
+
+        <input class="btn btn-primary btn-vpb d-none" type="submit" th:value="#{common.searchform.submit}"/>
+
+        <div class="form-group row mr-md-0 ml-md-0">
+            <div class="col-md-8 offset-md-2 extend-search-vpb">
+                <button type="submit" th:formaction="@{/patent/lt/search-form}" class="link-button-extend-search">
+                    <img th:src="@{/images/cross.jpg}" border="0"/>
+                    <span th:text="#{common.quicksearch}"/></a>
+                </button>
+            </div>
+        </div>
+
+        <input class="btn btn-primary btn-vpb d-none" type="submit" th:value="#{common.searchform.submit}"/>
+
+        <div class="form-group row mr-md-0 ml-md-0">
+            <div class="col-md-5 offset-md-5 extend-search-vpb">
+                <button type="submit" th:formaction="@{/patent/lt/advanced-search-form}" class="link-button-extend-search">
+                    <img th:src="@{/images/cross.jpg}" border="0"/>
+                    <span th:text="#{common.advancedsearch}"/></a>
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0">
+            <div class="col-md-8 offset-md-2 btn-wrap">
+                <input class="btn btn-primary btn-vpb" type="submit" th:value="#{common.searchform.submit}"/>
+                <input class="btn btn-primary btn-vpb" type="reset" th:value="#{common.searchform.reset}"/>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

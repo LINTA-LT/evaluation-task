@@ -1,0 +1,76 @@
+status: 200
+content-type: text/html
+link: ?lang=en
+link: ?lang=lt
+link: /pdb/trademark/image/2025%203273
+text: Trademark details
+text: EN
+text: |
+text: LT
+text: EIMIN
+text: Trade mark
+text: (210)
+text: Application number
+text: 2025 3273
+text: (220)
+text: Date of filing the application
+text: 2025-12-31
+text: (111)
+text: Registration number
+text: (151)
+text: Registration date
+text: (181)
+text: Expire
+text: (450)
+text: Date of registration publication, bulletin No.
+text: Legal status
+text: Waiting for examination
+text: Reproduction of the mark
+text: (540)
+text: EIMIN
+text: (531)
+text: Indication of Vienna Classification
+text: 29.01.05, 25.07.07, 29.01.06, 26.03.05, 29.01.12, 26.07.25, 26.11.12
+text: Indication concerning colors claimed
+text: (591)
+text: Violetinė, Balta
+text: Indication of International Classification of Goods and Services, list of goods and (or) services
+text: (511)
+text: 16
+text: Popierius ir kartonas; spaudiniai; įrišimo medžiagos; fotonuotraukos; raštinės ir biuro reikmenys, išskyrus baldus; raštinės ir buitinės lipniosios medžiagos; braižymo, piešimo ir dailininkų reikmenys; teptukai; mokomoji medžiaga ir vaizdinės priemonės; plastikiniai vyniojimo ir pakavimo lakštai, plėvelės ir maišeliai; šriftai, klišės
+text: .
+text: 35
+text: Reklama; verslo vadyba, organizavimas ir tvarkyba; įstaigų veikla
+text: .
+text: 41
+text: Švietimas; mokymas; pramogos; sportinė ir kultūrinė veikla
+text: .
+text: 42
+text: Mokslo ir technologijų paslaugos ir su tuo susiję tyrimai ir projektavimas; pramoninės analizės, pramoninių tyrimų ir pramoninio konstravimo paslaugos; kokybės tikrinimo ir autentiškumo patvirtinimo paslaugos; kompiuterių programinės ir aparatinės įrangos projektavimas ir tobulinimas
+text: .
+text: Applicant (731) / Owner (732)
+text: (731)
+text: Name
+text: LIETUVOS RESPUBLIKOS EKONOMIKOS IR INOVACIJŲ MINISTERIJA
+text: Address
+text: Šeimyniškių g. 19-401, 09236 Vilnius
+text: Country
+text: LT
+text: Attorney or representative
+text: (740)
+text: Name
+text: Saulius Pavardenis165165
+text: Address
+text: Savanorių pr. 49-13, LT-91464 Telšiai
+text: Country
+text: LT
+text: Disclaimer
+text: (526)
+text: Exhibition priority
+text: (230)
+text: Date, country
+text: Convention priority
+text: (300)
+text: Convention priority
+text: Date
+text: Country

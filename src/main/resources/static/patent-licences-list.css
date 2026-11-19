@@ -1,0 +1,207 @@
+body { background-color: white; margin: 0px }
+body, table { font-family: Verdana, Geneva, Arial, Helvetica, sans-serif }
+
+div#lang { 
+	background-color: #708090;
+	font-size: 11px;
+	float: right;
+	text-align: left;
+	letter-spacing: 0.05ex;
+	padding: 4px 20px;	
+	border-left: 1px solid white;	
+}
+div#lang, div#lang a { color: #ffffff } 
+div#lang a { text-decoration: none }
+div#lang a:hover { color: white; text-decoration: overline }
+
+div#menu_1 { 
+	background-color: #2f4f4f;
+	font-size: 11px;
+	letter-spacing: 0.2ex;
+	padding: 6px 10px;
+	text-align: left;
+	border-bottom: 1px solid white;
+}
+div#menu_1, div#menu_1 a { color: #c0c0c0 } 
+div#menu_1 a { text-decoration: none }
+div#menu_1 a:hover { color: white; text-decoration: overline }
+
+div#menu_2 {
+	background: url(../_img/bgr_juosta_hor.jpg) no-repeat 100% 0%; margin: 0px;
+	border-top: 1px solid #ffffff;
+	color : #2f4f4f;
+	/*border-bottom: 1px solid #778899;*/
+	margin-left: 22px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	text-align: left;
+	font-size: 13px;
+	font-weight: bold;
+}
+/*
+div#menu_2 a { color : #191970; text-decoration : none; }
+div#menu_2 a:hover { color : #b22222; text-decoration: overline }
+div#menu_2 a:visited { color : #191970; }
+*/
+a#dizainas, a#isradimai, a#topografijos, a#prekiu_zenklai {
+letter-spacing: 0.1em; padding-left: 6px; padding-right: 16px; color: #2f4f4f; text-decoration: none }
+
+span#dizainas, span#isradimai, span#topografijos, span#prekiu_zenklai {
+letter-spacing: 0.1em; padding-left: 6px; padding-right: 16px; color: #2f4f4f; text-decoration: none }
+
+a#dizainas { border-left: 16px solid #ffd700 }
+a#dizainas:hover { border-left: 16px solid #daa520; color: #daa520 }
+span#dizainas { border-left: 16px solid #ffd700 }
+
+a#isradimai { border-left: 16px solid #8fbc8f }
+a#isradimai:hover { border-left: 16px solid #008000; color: #008000 }
+
+a#topografijos { border-left: 16px solid #4682b4 }
+a#topografijos:hover { border-left: 16px solid #00008b; color: #00008b }
+span#topografijos { border-left: 16px solid #4682b4 }
+
+a#prekiu_zenklai { border-left: 16px solid #ff4500 }
+a#prekiu_zenklai:hover { border-left: 16px solid #b22222; color: #b22222 }
+
+div#menu_3 {
+	font-size: 12px; padding: 0px; 
+}
+div.menuBody_a { margin: 10px; margin-bottom: 12px; }
+div.menuBody_b { border-top: 3px solid white; margin: 10px; padding-top: 12px }
+
+div.menuItem { background: url(../_img/button.gif) no-repeat 3px 5px;
+margin-bottom: 6px; padding: 2px; padding-left: 14px;
+border: 1px solid #dcdcdc; }
+div.menuItem, div.menuItem a { color: #333333 } 
+div.menuItem a { text-decoration: none }
+div.menuItem a:hover { color: #00008b }
+
+div#contact {
+	color: #008080;
+	font-size: 11px;
+	position: absolute;
+	left: 740px;
+	top: 50px;
+	white-space: nowrap;
+}
+div#contact a { color: #4682b4; }
+
+div#header {
+background-color: white;
+background: white url(../_img/bgr_header.jpg) repeat-x;
+}
+
+table#basicFrame { }
+td#left { width: 220px; background-color: #dcdcdc; border-top: 3px solid #008080; border-right: 1px solid #008080; }
+td#center { width: 100%; }
+td#right { width: 220px; background-color: #D9E2F8; border-top: 3px solid #008080; border-left: 1px solid #008080; }
+td#left, td#center, td#right { vertical-align: top }
+
+table#search { /*background-color: white; float: right;*/ font-size: 11px; padding: 2px }
+table#search form { margin: 0px }
+table#search form input#query { border: 1px solid #2f4f4f; width: 100px; font-size: 11px }
+table#search a {  color: #2f4f4f; text-decoration: none; }
+table#search a:hover { color: #cc0000; text-decoration: overline }  
+
+div#content_1 { 
+	background: white url(../_img/bgr_content.jpg) no-repeat 100% 0%;
+	/*border-top: 1px solid #008080;
+	border-left: 1px dashed #008080;
+	border-right: 1px dashed #008080;*/
+	font-size: 12px;
+	padding: 10px 20px;
+	letter-spacing: 0.05em;
+	font-family: Helvetica, sans-serif;
+}
+div#content_1 li { margin-bottom: 10px }
+div#content_1 table { font-size: x-small; }
+h1 {
+	font-size: 18px;
+	font-wight: bold;
+	color: #666666;
+	/*border-top: 2px solid white;*/
+	margin-top: 6px;
+	padding-top: 6px;
+}
+h2 {
+	font-size: 16px;
+	font-wight: bold;
+	color: #444444;
+	border-top: 1px solid #778899;
+}
+h3 {
+	font-size: 14px;
+}
+h1, h2, h3 { font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; letter-spacing: 0.01em; }
+
+p { font-size: 12px; line-height: 1.6em }
+
+table.sar td {
+	background-color : #f5f5f5;
+	border-right : 2px solid #2f4f4f;
+	border-bottom : 1px solid #2f4f4f;
+	font-family : Helvetica, Arial, sans-serif;
+	font-size : 12px;
+	vertical-align: top;
+}
+table.sar th {
+	background-color : #ffe4b5;
+	border-right : 2px solid #2f4f4f;
+	border-bottom : 1px solid #2f4f4f;
+	font-family : Helvetica, Arial, sans-serif;
+	font-size : 13px;
+}
+table.sar td.division { font-weight: bold; background-color: #ffffe0 }
+table.sar td.sector { font-weight: bold; background-color: white }
+
+
+div#content_2 {
+ 	padding: 10px; padding-bottom: 1px;
+	font-size: 11px;
+}
+
+div#content_2 strong { font-size: 12px; }
+
+div#footer {
+	background: white url(../_img/bgr_foot.gif) repeat-x;
+	border-top: 1px solid #008080;
+	margin: 10px;
+	margin-top: 0px;
+	padding: 10px;
+	font-size: 11px;
+	color: #333333;
+	text-align: center;	
+}
+
+/* Ataskaitos */
+
+div.turinys {
+	background: white url(../_img/bgr_content.jpg) no-repeat 100% 0%;
+	margin: 20px;
+	font-size: 12px;
+	padding: 10px;
+	padding-right: 20px;	
+	letter-spacing: 0.05em;
+	font-family: Helvetica, sans-serif;
+}
+div.turinys li { margin-bottom: 10px }
+div.turinys table { font-size: x-small; }
+
+div.footer {
+	background: white url(../_img/bgr_foot.gif) repeat-x;
+	border-top: 1px solid #008080;
+	margin: 10px;
+	margin-top: 0px;
+	padding: 10px;
+	font-size: 11px;
+	color: #333333;
+	text-align: center;	
+}
+
+/* Teisës aktø paieðka */
+
+table.takt { font-size: x-small }
+table.takt td.pav { background-color: #d3d3d3; width: 110px; vertical-align: top }
+table.takt option { background-color: #ffffe0; }
+input.reset { background-color: #20b2aa }
+input.submit { background-color: #20b2aa }

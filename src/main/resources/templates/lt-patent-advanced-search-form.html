@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{welcomepage.patents.lt.search}"/>
+
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{/jquery-ui-1.12.1/jquery-ui.css}">
+
+    <script th:src="@{/js/utilities.js}"></script>
+    <script th:src="@{/js/jquery-3.4.1.js}"></script>
+    <script th:src="@{/jquery-ui-1.12.1/jquery-ui.min.js}"></script>
+    <script th:src="@{/jquery-ui-1.12.1/datepicker-lt.js}"></script>
+    <script th:inline="javascript">
+        //locale language "lt" or "en" for the calendar
+        var locale = [[${#locale.language}]];
+    </script>
+    <script>
+        $( function() {
+            $( "[data-type='datepicker']").datepicker(
+                {
+                    constrainInput: true,
+                    dateFormat: "yy/mm/dd",
+                    firstDay: 1
+                }
+            );
+        } );
+        $.datepicker.setDefaults( $.datepicker.regional[ locale ] );
+    </script>
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+
+    <div class="row mb2">
+        <div class="col-md-7 col-sm-12">
+            <a th:href="@{/}">
+                <img th:src="@{/images/home-button-icon-6.png}" width="24px" height="24px" th:alt="#{common.homepage}">
+            </a>
+            <a class="lang-select" th:href="@{''(lang='en')}">EN</a>
+            <span class="lang-select-separator"> | </span>
+            <a class="lang-select" th:href="@{''(lang='lt')}">LT</a>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-12 d-flex justify-content-end">
+            <p>
+                <span class="mr-1"><span th:text="#{common.lastupdate}"/>: </span>
+                <span class='color_rez'><span class="color_rez" th:text="${lastUpdated}"/></span>
+            </p>
+        </div>
+    </div>
+
+    <form class="form-vpb form-inline" th:action="@{/patent/lt/advanced-search}" method="get" th:object="${searchForm}">
+
+        <div class="form-group row mr-md-0 ml-md-0 d-red">
+            <h4 th:text="#{welcomepage.patents.lt.search}"/>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 d-red">
+            <h4 th:text="#{common.searchform.title}"/>
+        </div>
+
+        <!-- ********* Patent number ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f11_mc">
+                    <strong>(11)</strong> <span th:text="#{patent.searchform.number}"/>
+                </label>
+            </div>
+            <div class="col-md-3">
+                <select id="f11_mc" class="form-control" name="f11_mc">
+                    <option value="eq" th:selected="${searchForm.f11_mc != null ? searchForm.f11_mc.value == 'eq' : false}" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" th:selected="${searchForm.f11_mc != null ? searchForm.f11_mc.value == 'has' : true}" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:selected="${searchForm.f11_mc != null ? searchForm.f11_mc.value == 'sw' : false}" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:selected="${searchForm.f11_mc!= null ? searchForm.f11_mc.value == 'ew' : false}" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f11" maxlength="128" th:value="*{f11}">
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#11}');|"><img border="0" th:src="@{/images/questionmark.gif}"/></a>
+            </div>
+        </div>
+
+        <!-- ********* Application number ****************  -->
+
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f21_mc">
+                    <strong>(21)</strong><span th:text="#{patent.searchform.applicationnumber}"/>
+                </label>
+            </div>
+            <div class="col-md-3">
+                <select id="f21_mc" class="form-control" name="f21_mc">
+                    <option value="eq" th:selected="${searchForm.f21_mc != null ? searchForm.f21_mc.value == 'eq' : true}" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" th:selected="${searchForm.f21_mc != null ? searchForm.f21_mc.value == 'has' : false}" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:selected="${searchForm.f21_mc != null ? searchForm.f21_mc.value == 'sw' : false}" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:selected="${searchForm.f21_mc!= null ? searchForm.f21_mc.value == 'ew' : false}" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f21" maxlength="30" th:value="*{f21}">
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#21}');|"><img border="0" th:src="@{/images/questionmark.gif}"/></a>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="status_mc" th:text="#{patent.searchform.status}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="status_mc" disabled="disabled" class="form-control" name="status_mc">
+                    <option value="eq" selected="selected" th:text="#{common.dropdown.option.equals}"/>
+                </select>
+            </div>
+            <div th:replace="fragments/select-dropdown :: dropdown(
+                'status',
+                'status',
+                ${searchForm.status},
+                ${patentStatuses},
+                'common.dropdown.label.all',
+                'col-md-3')">
+            </div>
+
+            <div class="col-md-1">
+            </div>
+        </div>
+
+        <!-- ********* IPCCPC data ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f51_mc">
+                    <strong>(51)</strong><span th:text="#{patent.searchform.ipc}"/>
+                </label>
+            </div>
+            <div class="col-md-3">
+                <select id="f51_mc" class="form-control" name="f51_mc">
+                    <option value="eq" selected="selected" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f51" maxlength="30">
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#51}');|"><img border="0" th:src="@{/images/questionmark.gif}"/></a>
+            </div>
+        </div>
+        <!-- ********* Applicant data ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-2 offset-md-2 label-col">
+                <strong>(71)</strong><span th:text="#{patent.searchform.applicant}"/>
+            </div>
+            <div class="col-md-6"><hr></div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#71}');|"><img border="0" th:src="@{/images/questionmark.gif}"/></a>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f71_name_mc" th:text="#{patent.searchform.applicant.name}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="f71_name_mc" class="form-control" name="f71_name_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f71_name" maxlength="128">
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f71_address_mc" th:text="#{patent.searchform.applicant.address}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="f71_address_mc" disabled="true" class="form-control" name="f71_address_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f71_address" maxlength="128">
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f71_country" th:text="#{patent.searchform.applicant.country}"/>
+            </div>
+            <div class="col-md-3 offset-md-3">
+                <select id="f71_country" name="f71_country" class="form-control chosen-select">
+                    <option value="" th:label="#{common.select}" th:text="#{common.select}"/>
+                    <option th:each="country : ${countriesLt}" th:value="${country.value}" th:text="${country.label}" th:label="${country.label}"/>
+                </select>
+            </div>
+        </div>
+
+        <!-- ********* Owner data ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-2 offset-md-2 label-col">
+                <strong>(73)</strong><span th:text="#{patent.searchform.owner}"/>
+            </div>
+            <div class="col-md-6"><hr></div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#73}');|"><img border="0" th:src="@{/images/questionmark.gif}"/></a>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f73_name_mc" th:text="#{patent.searchform.owner.name}"/>
+            </div>
+
+            <div class="col-md-3">
+                <select id="f73_name_mc" class="form-control" name="f73_name_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f73_name" maxlength="128"/>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f73_address_mc" th:text="#{patent.searchform.owner.address}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="f73_address_mc" disabled="true" class="form-control" name="f73_address_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f73_address" maxlength="128"/>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f73_country" th:text="#{patent.searchform.owner.country}"/>
+            </div>
+            <div class="col-md-3 offset-md-3">
+                <select id="f73_country" name="f73_country" class="form-control chosen-select">
+                    <option value="" th:label="#{common.select}" th:text="#{common.select}"/>
+                    <option th:each="country : ${countriesLt}" th:value="${country.value}" th:text="${country.label}" th:label="${country.label}"/>
+                </select>
+            </div>
+        </div>
+
+        <!-- ********* Inventor data ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-2 offset-md-2 label-col">
+                <strong>(72)</strong><span th:text="#{patent.searchform.inventor}"/>
+            </div>
+            <div class="col-md-6"><hr></div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#72}');|"><img border="0" th:src="@{/images/questionmark.gif}"/></a>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f72_name_mc" th:text="#{patent.searchform.inventor.name}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="f72_name_mc" class="form-control" name="f72_name_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f72_name" maxlength="128">
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f72_country" th:text="#{patent.searchform.inventor.country}"/>
+            </div>
+            <div class="col-md-3 offset-md-3">
+                <select id="f72_country" name="f72_country" class="form-control chosen-select">
+                    <option value="" th:label="#{common.select}" th:text="#{common.select}"/>
+                    <option th:each="country : ${countriesLt}" th:value="${country.value}" th:text="${country.label}" th:label="${country.label}"/>
+                </select>
+            </div>
+        </div>
+
+        <!-- ********* Attorney data ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-2 offset-md-2 label-col">
+                <strong>(74)</strong><span th:text="#{patent.searchform.attorney}"/>
+            </div>
+            <div class="col-md-6"><hr></div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#74}');|"><img border="0" th:src="@{/images/questionmark.gif}"/></a>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f74_name_mc" th:text="#{patent.searchform.attorney.name}"/>
+            </div>
+
+            <div class="col-md-3">
+                <select id="f74_name_mc" class="form-control" name="f74_name_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f74_name" maxlength="128"/>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra mb-5">
+            <div class="col-md-4 label-col">
+                <label for="f74_address_mc" th:text="#{patent.searchform.owner.address}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="f74_address_mc" disabled="true" class="form-control" name="f74_address_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f74_address" maxlength="128"/>
+            </div>
+        </div>
+
+        <!-- ********* Words in the Title ****************  -->
+
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f54_mc">
+                    <strong>(54)</strong> <span th:text="#{patent.searchform.words.in.title}"/>
+                </label>
+            </div>
+            <div class="col-md-3">
+                <select id="f54_mc" class="form-control" name="f54_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f54" maxlength="128">
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#54}');|"><img border="0" th:src="@{/images/questionmark.gif}"/></a>
+            </div>
+        </div>
+
+        <!-- ********* Words in the Abstract ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f57_mc">
+                    <strong>(57)</strong><span th:text="#{patent.searchform.words.in.abstract}"/>
+                </label>
+            </div>
+            <div class="col-md-3">
+                <select id="f57_mc" class="form-control" name="f57_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f57" maxlength="128">
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#57}');|"><img border="0" th:src="@{/images/questionmark.gif}"/></a>
+            </div>
+        </div>
+
+        <!-- ********* Priority Data ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f30_number_mc">
+                <strong>(30)</strong>
+                    <span th:text="#{patent.searchform.priority.applicationnumber}"/>
+                </label>
+            </div>
+            <div class="col-md-3">
+                <select id="f30_number_mc" class="form-control" name="f30_number_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="f30_number" maxlength="128">
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#30}');|"><img border="0" th:src="@{/images/questionmark.gif}"/></a>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 offset-md-1 label-group">
+                <label for="f30_date" th:text="#{patent.searchform.priority.applicationdate}"/>
+            </div>
+            <div class="col-md-3"><em>yyyy/mm/dd</em></div>
+            <div class="col-md-3">
+                <input id="f30_date" class="form-control" data-type="datepicker" placeholder="yyyy/mm/dd" name="f30_date" maxlength="10">
+            </div>
+        </div>
+
+
+        <!-- ********* 86 PCT application data (International Data) ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f86_appnumber_mc">
+                    <strong>(86)</strong> <span th:text="#{patent.searchform.pct.application}"/>
+                </label>
+            </div>
+            <div class="col-md-6"><hr></div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#86}');|"><img border="0" th:src="@{/images/questionmark.gif}"/></a>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 label-col">
+                <label for="f86_appnumber_mc" th:text="#{common.number}"/>
+            </div>
+            <div class="col-md-2">
+                <select id="f86_appnumber_mc" class="form-control" name="f86_appnumber_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input class="form-control" type="text" name="f86_appnumber" maxlength="128">
+            </div>
+            <div class="col-md-1 label-col">
+                <label for="f86_appdate" th:text="#{common.date}"/>
+            </div>
+            <div class="col-md-2">
+                <input id="f86_appdate" data-type="datepicker" placeholder="yyyy/mm/dd" class="form-control" name="f86_appdate" maxlength="10">
+            </div>
+        </div>
+
+        <!-- ********* 87 PCT application publication (International Data) ****************  -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <label for="f87_pubnumber_mc">
+                    <strong>(87)</strong> <span th:text="#{patent.searchform.pct.publication}"/>
+                </label>
+            </div>
+            <div class="col-md-6"><hr></div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#87}');|"><img border="0" th:src="@{/images/questionmark.gif}"/></a>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 label-col">
+                <label for="f87_pubnumber_mc">
+                    <span th:text="#{common.number}"/>
+                </label>
+            </div>
+            <div class="col-md-2">
+                <select id="f87_pubnumber_mc" class="form-control" name="f87_pubnumber_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input class="form-control" type="text" name="f87_pubnumber" maxlength="128"/>
+            </div>
+            <div class="col-md-1 label-col">
+                <label for="f87_pubdate" th:text="#{common.date}"/>
+            </div>
+            <div class="col-md-2">
+                <input id="f87_pubdate" data-type="datepicker" placeholder="yyyy/mm/dd" class="form-control" name="f87_pubdate" maxlength="10"/>
+            </div>
+        </div>
+
+        <!-- ********* SPA number **************** -->
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-3 offset-md-1 label-group">
+                <strong>(21)</strong> <span th:text="#{patent.searchform.spa.number}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="spa_mc" class="form-control" name="spa_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="spa" maxlength="128"/>
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#papild}');|"><img border="0" th:src="@{/images/questionmark.gif}"/></a>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0 zebra">
+            <div class="col-md-4 label-col">
+                <strong>(95)</strong> <span th:text="#{patent.eu.searchform.spa.f95}"/>
+            </div>
+            <div class="col-md-3">
+                <select id="spa_f95_mc" class="form-control" name="spa_f95_mc">
+                    <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                    <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                    <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="spa_f95" maxlength="128"/>
+            </div>
+            <div class="col-md-2">
+                <a th:href="|javascript: openHelpWindow('@{/patent-help.html#veiklmedz}');|"><img border="0" th:src="@{/images/questionmark.gif}"/></a>
+            </div>
+        </div>
+
+        <input class="btn btn-primary btn-vpb d-none" type="submit" th:value="#{common.searchform.submit}"/>
+
+        <div class="form-group row mr-md-0 ml-md-0">
+            <div class="col-md-5 offset-md-5 extend-search-vpb">
+                <button type="submit" th:formaction="@{/patent/lt/search-form}" class="link-button-extend-search">
+                    <img th:src="@{/images/cross.jpg}" border="0"/>
+                    <span th:text="#{common.quicksearch}"/></a>
+                </button>
+            </div>
+        </div>
+
+        <input class="btn btn-primary btn-vpb d-none" type="submit" th:value="#{common.searchform.submit}"/>
+
+        <div class="form-group row mr-md-0 ml-md-0">
+            <div class="col-md-8 offset-md-2 extend-search-vpb">
+                <button type="submit" th:formaction="@{/patent/lt/text-search-form}" class="link-button-extend-search">
+                    <img th:src="@{/images/cross.jpg}" border="0"/>
+                    <span th:text="#{common.textsearch}"/></a>
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group row mr-md-0 ml-md-0">
+            <div class="col-md-8 offset-md-2 btn-wrap">
+                <input class="btn btn-primary btn-vpb" type="submit" th:value="#{common.searchform.submit}"/>
+                <input class="btn btn-primary btn-vpb" type="reset" th:value="#{common.searchform.reset}"/>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

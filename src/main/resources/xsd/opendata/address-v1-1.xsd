@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://vpb.lt/open-data/schemas/address/v1-1"
+           xmlns:cc="http://vpb.lt/open-data/schemas/iso3166-1-extended-country-code/v1-1"
+           elementFormDefault="qualified">
+
+    <xs:annotation>
+        <xs:documentation>
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:import schemaLocation="iso3166-1-extended-country-code-v1-1.xsd" namespace="http://vpb.lt/open-data/schemas/iso3166-1-extended-country-code/v1-1"/>
+
+    <xs:complexType name="AddressType">
+        <xs:sequence>
+            <xs:element name="FormattedNameAddress">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="OrganizationName" type="xs:token" minOccurs="0"/>
+                        <xs:element name="Address" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="AddressCountryCode" type="cc:ExtendedISO3166CountryCodeType" minOccurs="0"/>
+                                    <xs:choice>
+                                        <xs:element name="FormattedAddress" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="AddressStreet" type="xs:token" minOccurs="0"/>
+                                                    <xs:element name="AddressCity" type="xs:token" minOccurs="0"/>
+                                                    <xs:element name="AddressState" type="xs:token" minOccurs="0"/>
+                                                    <xs:element name="AddressPostcode" type="xs:token" minOccurs="0"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="FreeFormatAddress" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="FreeFormatAddressLine" type="xs:string" maxOccurs="unbounded"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+</xs:schema>

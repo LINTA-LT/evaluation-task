@@ -1,0 +1,91 @@
+status: 200
+content-type: text/html
+link: /pdb/
+link: /pdb/design/search?f54=automobil&amp;f54_mc=has&amp;lang=en
+link: /pdb/design/search?f54=automobil&amp;f54_mc=has&amp;lang=lt
+link: /pdb/design/search-form
+link: /pdb/design/export/xlsx?f54=automobil&amp;f54_mc=has&amp;lang=en
+link: /pdb/design/search?f54=automobil&amp;f54_mc=has&amp;lang=en&amp;sortField=applicationnumber.keyword&amp;sortDir=asc&amp;offset=0
+link: /pdb/design/search?f54=automobil&amp;f54_mc=has&amp;lang=en&amp;sortField=applicationnumber.keyword&amp;sortDir=desc&amp;offset=0
+link: /pdb/design/search?f54=automobil&amp;f54_mc=has&amp;lang=en&amp;sortField=registrationnumber_numeric&amp;sortDir=asc&amp;offset=0
+link: /pdb/design/search?f54=automobil&amp;f54_mc=has&amp;lang=en&amp;sortField=registrationnumber_numeric&amp;sortDir=desc&amp;offset=0
+link: /pdb/design/search?f54=automobil&amp;f54_mc=has&amp;lang=en&amp;sortField=dtexpiry&amp;sortDir=asc&amp;offset=0
+link: /pdb/design/search?f54=automobil&amp;f54_mc=has&amp;lang=en&amp;sortField=dtexpiry&amp;sortDir=desc&amp;offset=0
+link: /pdb/design/search?f54=automobil&amp;f54_mc=has&amp;lang=en&amp;sortField=status_en.keyword&amp;sortDir=asc&amp;offset=0
+link: /pdb/design/search?f54=automobil&amp;f54_mc=has&amp;lang=en&amp;sortField=status_en.keyword&amp;sortDir=desc&amp;offset=0
+link: /pdb/design/details/2025%20032
+link: /pdb/design/details/2014%20012
+link: /pdb/design/details/2009%20010
+link: /pdb/design/details/2009%20006
+link: /pdb/design/details/2005%20023
+text: Design database
+text: EN
+text: |
+text: LT
+text: Design database
+text: New search
+text: Search results
+text: (
+text: Found
+text: :
+text: 5
+text: )
+text: Updated
+text: :
+text: 2026-11-09
+text: Print
+text: Export to MS Excel
+text: No
+text: Design Title
+text: Application No
+text: Registration No
+text: Class and subclass
+text: Representation of the Design
+text: No of design samples
+text: Expire
+text: Legal status
+text: 1
+text: .
+text: AUTOMOBILIŲ ORO GAIVIKLIAI
+text: 2025 032
+text: 2125
+text: 28.05
+text: 10
+text: 2030-11-11
+text: Registered and fully published
+text: 2
+text: .
+text: GRAFINIS DIZAINAS AUTOMOBILIAMS
+text: 2014 012
+text: 1790
+text: 32.00
+text: 2
+text: 2019-07-21
+text: Design lapsed
+text: 3
+text: .
+text: DVIEJŲ AUKŠTŲ GAISRINIŲ AUTOMOBILIŲ PASTATAS
+text: 2009 010
+text: 1650
+text: 25.03
+text: 1
+text: 2014-04-23
+text: Design lapsed
+text: 4
+text: .
+text: GAISRINIŲ AUTOMOBILIŲ DEPAS
+text: 2009 006
+text: 1647
+text: 25.03
+text: 3
+text: 2014-03-12
+text: Design lapsed
+text: 5
+text: .
+text: AUTOMOBILIŲ REGISTRACIJOS NUMERIŲ LENTELĖS
+text: 2005 023
+text: 1537
+text: 20.03
+text: 7
+text: 2020-08-22
+text: Design lapsed

@@ -1,0 +1,39 @@
+status: 200
+content-type: text/html
+link: /pdb/
+link: ?lang=en
+link: ?lang=lt
+link: javascript: openHelpWindow(&#39;/pdb/ds-help.html#54&#39;);
+link: javascript: openHelpWindow(&#39;/pdb/ds-help.html#11&#39;);
+link: javascript: openHelpWindow(&#39;/pdb/ds-help.html#21&#39;);
+text: Design database
+text: EN
+text: |
+text: LT
+text: Updated
+text: :
+text: 2026-11-09
+text: Design database
+text: (54)
+text: Title of the design:
+text: Is
+text: Contains
+text: Starts with
+text: Ends with
+text: (11)
+text: Registration number:
+text: Is
+text: Contains
+text: Starts with
+text: Ends with
+text: (21)
+text: Application number:
+text: Is
+text: Contains
+text: Starts with
+text: Ends with
+text: (22)
+text: Date of filing the application:
+text: From
+text: To
+text: Advanced search

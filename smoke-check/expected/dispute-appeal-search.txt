@@ -1,0 +1,185 @@
+status: 200
+content-type: text/html
+link: /pdb/
+link: /pdb/dispute/appeal/search?refapplicationnumber=ANZ-3&amp;refapplicationnumber_mc=sw&amp;lang=en
+link: /pdb/dispute/appeal/search?refapplicationnumber=ANZ-3&amp;refapplicationnumber_mc=sw&amp;lang=lt
+link: /pdb/dispute/appeal/search-form
+link: /pdb/dispute/appeal/export/xlsx?refapplicationnumber=ANZ-3&amp;refapplicationnumber_mc=sw&amp;lang=en
+link: /pdb/dispute/appeal/search?refapplicationnumber=ANZ-3&amp;refapplicationnumber_mc=sw&amp;lang=en&amp;sortField=refapplicationnumber.keyword&amp;sortDir=asc&amp;offset=0
+link: /pdb/dispute/appeal/search?refapplicationnumber=ANZ-3&amp;refapplicationnumber_mc=sw&amp;lang=en&amp;sortField=refapplicationnumber.keyword&amp;sortDir=desc&amp;offset=0
+link: /pdb/dispute/appeal/search?refapplicationnumber=ANZ-3&amp;refapplicationnumber_mc=sw&amp;lang=en&amp;sortField=applicationnumber.keyword&amp;sortDir=asc&amp;offset=0
+link: /pdb/dispute/appeal/search?refapplicationnumber=ANZ-3&amp;refapplicationnumber_mc=sw&amp;lang=en&amp;sortField=applicationnumber.keyword&amp;sortDir=desc&amp;offset=0
+link: /pdb/dispute/appeal/search?refapplicationnumber=ANZ-3&amp;refapplicationnumber_mc=sw&amp;lang=en&amp;sortField=dtdecisioncameintoeffect&amp;sortDir=asc&amp;offset=0
+link: /pdb/dispute/appeal/search?refapplicationnumber=ANZ-3&amp;refapplicationnumber_mc=sw&amp;lang=en&amp;sortField=dtdecisioncameintoeffect&amp;sortDir=desc&amp;offset=0
+link: /pdb/trademark/details/2014%201897
+link: /pdb/dispute/details/ANZ-39
+link: /pdb/trademark/details/2014%201544
+link: /pdb/dispute/details/ANZ-38
+link: /pdb/trademark/details/2014%201401
+link: /pdb/dispute/details/ANZ-37
+link: /pdb/trademark/details/2014%202178
+link: /pdb/trademark/details/2014%201247
+link: /pdb/dispute/details/ANZ-35
+link: /pdb/trademark/details/2013%201142
+link: /pdb/trademark/details/2013%201839
+link: /pdb/dispute/details/ANZ-33
+link: /pdb/trademark/details/2013%202240
+link: /pdb/dispute/details/ANZ-32
+link: /pdb/trademark/details/2013%200716
+link: /pdb/dispute/details/ANZ-31
+link: /pdb/trademark/details/2013%200161
+link: /pdb/dispute/details/ANZ-30
+link: /pdb/trademark/details/2010%200553
+link: /pdb/dispute/details/ANZ-3
+text: Appeal search results
+text: EN
+text: |
+text: LT
+text: Trademark Appeal database
+text: New search
+text: Search results
+text: (
+text: Found
+text: :
+text: 11
+text: )
+text: Updated
+text: :
+text: 2026-11-16
+text: Print
+text: Export to MS Excel
+text: No
+text: Appeal number
+text: Application no.
+text: Decision date
+text: Decision no.
+text: Contested trademark
+text: Registration no.
+text: Indication of goods and services
+text: Legal basis
+text: Decision
+text: Decision text
+text: Appeal status
+text: 1
+text: .
+text: ANZ-39
+text: 2014 1897
+text: 2017-05-15
+text: 2Ap-1833
+text: Tiesiog jauskitės gerai
+text: 6.1.4, 6.1.2
+text: Rejected
+text: Decision text
+text: Rejected
+text: 2
+text: .
+text: ANZ-38
+text: 2014 1544
+text: 2017-02-08
+text: 2Ap-1810
+text: Jauskitės gerai
+text: 6.1.4, 6.1.2
+text: Rejected
+text: Decision text
+text: Rejected
+text: 3
+text: .
+text: ANZ-37
+text: 2014 1401
+text: 2016-04-12
+text: 2Ap-1754
+text: MĖSINGOS
+text: 6.1.4, 6.1.2
+text: Rejected
+text: Decision text
+text: Pending
+text: 4
+text: .
+text: ANZ-36
+text: 2014 2178
+text: 2016-02-25
+text: 2Ap-1746
+text: KEULĖ RŪKĖ BBQ &amp; BEER
+text: 43
+text: 6.1.6
+text: Rejected
+text: 5
+text: .
+text: ANZ-35
+text: 2014 1247
+text: 2016-03-07
+text: 2Ap-1747
+text: GERMSHIELD
+text: 73594
+text: Granted
+text: Decision text
+text: Granted
+text: 6
+text: .
+text: ANZ-34
+text: 2013 1142
+text: 2015-10-19
+text: 2Ap-1716
+text: 25
+text: 6.1.2
+text: Rejected
+text: 7
+text: .
+text: ANZ-33
+text: 2013 1839
+text: 2015-09-16
+text: 2Ap-1712
+text: IDEALUS LANGAS
+text: 72566
+text: 6.1.4, 6.1.2
+text: Partially granted
+text: Decision text
+text: Pending
+text: 8
+text: .
+text: ANZ-32
+text: 2013 2240
+text: 2015-09-16
+text: 2Ap-1712
+text: IDEALUS LANGAS
+text: 72428
+text: 6.1.4, 6.1.2
+text: Partially granted
+text: Decision text
+text: Partially granted
+text: 9
+text: .
+text: ANZ-31
+text: 2013 0716
+text: 2015-07-24
+text: 2Ap-1704
+text: BRONCHOS
+text: 72427
+text: 5
+text: 6.1.4, 6.1.2
+text: Granted
+text: Decision text
+text: Granted
+text: 10
+text: .
+text: ANZ-30
+text: 2013 0161
+text: 2015-06-08
+text: 2Ap-1692
+text: 8-800-44444 nemokamas draudimo telefonas
+text: 6.1.4, 6.1.2
+text: Rejected
+text: Decision text
+text: Rejected
+text: 11
+text: .
+text: ANZ-3
+text: 2010 0553
+text: 2011-11-28
+text: 2Ap-1407
+text: CREDITINFO
+text: 64591
+text: 6.1.4, 6.1.2
+text: Partially granted
+text: Decision text
+text: Partially granted

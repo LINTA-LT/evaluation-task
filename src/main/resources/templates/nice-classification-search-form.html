@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{niceclass.searchform.windowtitle}"/>
+
+
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="row mb2">
+            <div class="col-md-7 col-sm-12">
+                <a th:href="@{/}">
+                    <img th:src="@{/images/home-button-icon-6.png}" width="24px" height="24px" th:alt="#{common.homepage}">
+                </a>
+                <a class="lang-select" th:href="@{''(lang='en')}">EN</a>
+                <span class="lang-select-separator"> | </span>
+                <a class="lang-select" th:href="@{''(lang='lt')}">LT</a>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-md-9 offset-md-1 col-12 text-center">
+                <h3>
+                    <span th:text="#{niceclass.pagetitle}"/>
+                </h3>
+            </div>
+        </div>
+
+        <form class="form-vpb form-inline" th:action="@{/niceclass/search}" method="get">
+
+            <div class="form-group row mr-md-0 ml-md-0 ml-sm-0 ml-xs-0">
+                <div class="col-md-4 col-sm-12 label-col">
+                    <label for="class_number_mc" th:text="#{niceclass.searchform.classnumber}"/>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <select id="class_number_mc" disabled="disabled" class="form-control" name="class_number_mc">
+                        <option value="eq" selected="selected" th:text="#{common.dropdown.option.equals}"/>
+                    </select>
+                </div>
+
+                <div class="col-md-3 col-sm-12">
+                    <input class="form-control" type="text" name="class_number"  maxlength="2">
+                </div>
+
+                <div class="col-md-2">
+                </div>
+            </div>
+
+
+            <div class="form-group row mr-md-0 ml-md-0 ml-sm-0 ml-xs-0">
+                <div class="col-md-4 col-sm-12 label-col">
+                    <label for="first_letter_mc" th:text="#{niceclass.searchform.firstletter}"/>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <select id="first_letter_mc" disabled="disabled" class="form-control"  name="first_letter_mc">
+                        <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                    </select>
+                </div>
+
+                <div class="col-md-1 col-sm-12">
+                    <input class="form-control" type="text" name="first_letter" maxlength="1">
+                </div>
+
+                <div class="col-md-2">
+                </div>
+            </div>
+
+            <div class="form-group row mr-md-0 ml-md-0 ml-sm-0 ml-xs-0">
+                <div class="col-md-4 col-sm-12 label-col">
+                    <label for="class_term_lt_mc" th:text="#{niceclass.searchform.classtermlt}"/>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <select id="class_term_lt_mc" class="form-control" name="class_term_lt_mc">
+                        <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                        <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                        <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                        <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                    </select>
+                </div>
+
+                <div class="col-md-3 col-sm-12">
+                    <input class="form-control" type="text" name="class_term_lt" maxlength="15">
+                </div>
+
+                <div class="col-md-2">
+                </div>
+            </div>
+
+
+            <div class="form-group row mr-md-0 ml-md-0 ml-sm-0 ml-xs-0">
+
+                <div class="col-md-4 col-sm-12 label-col">
+                    <label for="class_term_en_mc" th:text="#{niceclass.searchform.classtermen}"/>
+                </div>
+
+                <div class="col-md-3 col-sm-12">
+                    <select id="class_term_en_mc" class="form-control" name="class_term_en_mc">
+                        <option value="eq" th:text="#{common.dropdown.option.equals}"/>
+                        <option value="has" selected="selected" th:text="#{common.dropdown.option.contains}"/>
+                        <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                        <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                    </select>
+                </div>
+
+                <div class="col-md-3 col-sm-12">
+                    <input class="form-control" type="text" name="class_term_en" maxlength="15">
+                </div>
+
+                <div class="col-md-2">
+                </div>
+            </div>
+
+
+            <div class="form-group row mr-md-0 ml-md-0 ml-sm-0 ml-xs-0">
+
+                <div class="col-md-4 col-sm-12 label-col">
+                    <label for="basic_number_mc" th:text="#{niceclass.searchform.basicnumber}"/>
+                </div>
+
+                <div class="col-md-3 col-sm-12">
+                    <select id="basic_number_mc" class="form-control" name="basic_number_mc">
+                        <option value="eq" selected="selected" th:text="#{common.dropdown.option.equals}"/>
+                        <option value="has" th:text="#{common.dropdown.option.contains}"/>
+                        <option value="sw" th:text="#{common.dropdown.option.startswith}"/>
+                        <option value="ew" th:text="#{common.dropdown.option.endswith}"/>
+                    </select>
+                </div>
+
+                <div class="col-md-2 col-sm-12">
+                    <input type="text" name="basic_number" maxlength="10" class="sSubTitle2 form-control">
+                </div>
+
+                <div class="col-md-2">
+                </div>
+            </div>
+
+            <div class="form-group row mr-md-0 ml-md-0 ml-sm-0 ml-xs-0">
+
+                <div class="col-md-4 col-sm-12 label-col">
+                    <label for="version_year" th:text="#{niceclass.searchform.version}"/>
+                </div>
+
+                <div class="col-md-3 col-sm-12">
+                    <select id="version_year" class="form-control" name="version_year">
+                        <option th:each="i : ${#numbers.sequence( currentVersionYear, 2012)}" th:value="${i}" th:selected="${i == currentVersionYear}">
+                            <th:block th:text="${i}"/> <th:block th:if="${i == currentVersionYear}" th:text="#{niceclass.currentversion}"/>
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row mr-md-0 ml-md-0">
+                <div class="col-md-8 offset-md-2 btn-wrap">
+
+                    <input class="btn btn-primary btn-vpb" type="submit" th:value="#{common.searchform.submit}"/>
+                    <input class="btn btn-primary btn-vpb" type="reset" th:value="#{common.searchform.reset}"/>
+
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+
+</html>

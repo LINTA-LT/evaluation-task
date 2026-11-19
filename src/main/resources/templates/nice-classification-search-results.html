@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{niceclass.list.windowtitle}"/>
+
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="row mb2">
+        <div class="col-md-7 col-sm-12" th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}">
+            <a th:href="@{/}">
+                <img th:src="@{/images/home-button-icon-6.png}" width="24px" height="24px" th:alt="#{common.homepage}">
+            </a>
+            <a class="lang-select" th:href="@{${urlBuilder.replaceQueryParam('lang', 'en').build().toUriString()}}">EN</a>
+            <span class="lang-select-separator"> | </span>
+            <a class="lang-select" th:href="@{${urlBuilder.replaceQueryParam('lang', 'lt').build().toUriString()}}">LT</a>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-9 offset-md-1 col-12 text-center">
+            <h3>
+                <span th:text="#{niceclass.pagetitle}"/>
+                <span th:if="${searchForm.version_year == currentVersionYear}" th:text="#{niceclass.currentversion}"/>
+                <span th:unless="${searchForm.version_year == currentVersionYear}" th:text="#{niceclass.versionoftheyear(${searchForm.version_year.toString()})}"/>
+            </h3>
+        </div>
+    </div>
+
+    <div class="row top-row">
+        <div class='col-md-7 col-sm-12'>
+            <a th:href="@{/niceclass/search-form}" th:text="#{common.newsearch}"/>
+        </div>
+        <div class='col-md-5 col-sm-12 search-rez-line'>
+            <span th:text="#{common.searchresult}"/>
+            <span style="color:#800000;">
+                <strong>(<span th:text="#{common.totalresults}"/>: <span th:text="${totalHits}"/>)</strong>
+            </span>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-7 d-flex justify-content-start">
+            <span class="print" onClick="window.print(); return false;">
+                <span th:text="#{common.print}"/>
+                <img th:src="@{/images/print.png}" th:alt="#{common.print}">
+            </span>
+        </div>
+        <div class="col-5 d-flex justify-content-end">
+            <a style="color: #afafaf; text-decoration: none;" th:with="queryString=${#request.getQueryString()}"
+               th:href="@{'/niceclass/export/xlsx?' + ${queryString}}">
+                <span th:text="#{common.export.excel}"/>
+                <img th:src="@{/images/excel-icon-small.png}" width="24px" height="24px" th:alt="#{common.export.excel}">
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-striped table-vpb">
+        <thead>
+            <tr>
+                <th th:text="#{niceclass.list.no}"/>
+                <th th:text="#{niceclass.list.classnumber}"/>
+                <th th:text="#{niceclass.list.classtermlt}"/>
+                <th th:text="#{niceclass.list.basicnumber}"/>
+                <th th:text="#{niceclass.list.classtermen}"/>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="niceclassItem: ${niceClassItems}">
+                <td th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+                        th:text="${(searchForm.offset + niceclassItemStat.index + 1) + '.'}"/>
+                <td th:text="${niceclassItem.classNumber}"/>
+                <td th:text="${niceclassItem.classTermLt}"/>
+                <td th:text="${niceclassItem.basicNumber}"/>
+                <td th:text="${niceclassItem.classTermEn}"/>
+            </tr>
+        </tbody>
+    </table>
+
+    <th:block th:if="${(searchForm.offset - searchForm.size) >= 0}">
+        <a th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+           th:href="${urlBuilder.replaceQueryParam('offset', (searchForm.offset - searchForm.size)).build().toUriString()}"
+           class="btn btn-default btn-vpb" th:text="#{common.navigation.previous}"/>
+    </th:block>
+
+    <th:block th:if="${(searchForm.offset + searchForm.size) < totalHits}">
+        <a th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+           th:href="${urlBuilder.replaceQueryParam('offset', (searchForm.offset + searchForm.size)).build().toUriString()}"
+           class="btn btn-default btn-vpb" th:text="#{common.navigation.next}"/>
+    </th:block>
+
+</div>
+
+</body>
+</html>

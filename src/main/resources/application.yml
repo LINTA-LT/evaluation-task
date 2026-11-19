@@ -1,0 +1,49 @@
+server:
+  servlet:
+    context-path: /pdb
+
+spring:
+  thymeleaf:
+    cache: false
+#Disable creation of jobLauncherCommandLineRunner bean and prevent from running all jobs instantly
+  batch:
+    job:
+      enabled: false
+
+elasticsearch:
+  trademark-index: pdb-trademark
+  design-index: pdb-design
+  dispute-index: pdb-dispute
+  niceclass-index: pdb-niceclass
+
+tmdsview:
+  binarydata-dir:
+    #location where the binary files are stored, used for retrieving sound/multimedia files
+    tm: /images/tmview
+
+niceclass:
+  currentversion-year: 2026
+
+logging:
+  file:
+    name: pdb.log
+  level:
+    root: INFO
+
+opendata:
+  scheduler:
+    # ! This property has to be explicitly set via CLI during application start
+    #
+    # In multiple node environment, this property should be provided only for one node, as a command line argument
+    # during maven build/deployment process, e.g. -Dopendata.scheduler.enabled=true
+    enabled: ${opendata.scheduler.enabled}
+    cron: 0 25 3 1 * ?
+  xml:
+    validateAgainstSchema: true
+  files-dir: ${opendata.root-dir}/files
+  logs-dir: ${opendata.root-dir}/logs
+  tm:
+    image-uri-template: http://localhost:8080/pdb/trademark/image/{applicationNumber}
+  ds:
+    image-uri-template: http://localhost:8080/pdb/design/image/{designNumber}
+

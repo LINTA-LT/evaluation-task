@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+    <title th:text="#{patent.details.windowtitle}"/>
+
+    <link rel="stylesheet" th:href="@{/patent1.css}">
+
+    <script th:src="@{/js/utilities.js}"></script>
+
+</head>
+<body>
+
+<br>
+
+<div>
+    <table align="center">
+        <tr>
+            <td>
+                <img th:src="@{/images/M_herbas_nukirptas.png}" border="0" alt="Herbas">
+            </td>
+            <td valign="middle">
+                <img th:src="@{/images/uzrasas-herbo_mazas_nukirptas.jpg}" border="0" alt="VPB">
+            </td>
+        </tr>
+    </table>
+    <br>
+</div>
+
+<div style="float: right; font-size: 10px; padding: 3px; background-color: #fafad2;">
+    <a href="javascript:print()">
+        <img th:src="@{/images/print.png}" th:alt="#{common.print}">
+    </a>
+    <!--
+    <a href="javascript:print()">
+        <span th:text="#{common.print}"/>
+    </a>
+    -->
+</div>
+<div style="float: right; margin-right: 10px;">
+    <a th:href="@{''(lang='en')}">EN</a>
+    <span > | </span>
+    <a th:href="@{''(lang='lt')}">LT</a>
+</div>
+
+<th:block th:if="${dossier.patent != null}">
+    <div style="margin-bottom: 6px">
+        <strong style="color: #708090;">LT</strong> - <strong th:text="${dossier.patent.titleLt}"/>
+    </div>
+    <div>
+        <strong style="color: #708090;">EN</strong> - <strong th:text="${dossier.patent.titleEn}"/>
+    </div>
+</th:block>
+<th:block th:if="${dossier.patent == null}">
+    <div style="margin-bottom: 6px">
+        <strong style="color: #708090;">LT</strong> - <strong th:text="${dossier.titleLt}"/>
+    </div>
+    <div>
+        <strong style="color: #708090;">EN</strong> - <strong th:text="${dossier.titleEn}"/>
+    </div>
+</th:block>
+
+<div class="datablock_status" style="background-color: #fafad2; border-top: 1px solid #708090; border-bottom: 1px solid #708090; margin-top: 20px;">
+
+    <div style="display: flex; justify-content: flex-start; align-items:center; padding: 6px 10px;">
+        <p style="font-size: 13px; margin-right: 15px;" th:text="#{patent.details.status}"/>
+        <p style="font-size: 13px;font-weight: bold;">
+            <th:block th:if="${dossier.patent != null}">
+                <span th:if="${#locale.language == 'en'}" th:text="${dossier.patent.statusEn}"/>
+                <span th:if="${#locale.language == 'lt'}" th:text="${dossier.patent.statusLt}"/>
+            </th:block>
+            <th:block th:if="${dossier.patent == null}">
+                <span th:if="${#locale.language == 'en'}" th:text="${dossier.statusEn}"/>
+                <span th:if="${#locale.language == 'lt'}" th:text="${dossier.statusLt}"/>
+            </th:block>
+        </p>
+    </div>
+
+</div>
+
+<div class="menu_1" th:if="${dossier.patent != null}">
+
+    <th:block th:if="${dossier.patent.claimDoc != null}">
+        <a th:href="@{/patent/dossier/{number}/document/{documentId}(number=${dossier.number},documentId=${dossier.patent.claimDoc.id})}">
+            <span th:text="#{patent.details.claim}"/>
+        </a>
+    </th:block>
+    <th:block th:unless="${dossier.patent.claimDoc != null}">
+        <span th:text="#{patent.details.claim}"/>
+    </th:block>
+    |
+    <th:block th:if="${dossier.patent.hasLicences}">
+        <a th:href="@{/patent/dossier/{number}/licence/list(number=${dossier.number})}" target="_blank">
+            <span th:text="#{patent.details.licences}"/>
+        </a>
+    </th:block>
+    <th:block th:unless="${dossier.patent.hasLicences}">
+        <span th:text="#{patent.details.licences}"/>
+    </th:block>
+
+    <th:block th:unless="${dossier.patent.spas == null}">
+        <br/><span th:text="#{patent.details.spa}"/>:
+        <th:block th:each="spa: ${dossier.patent.spas}">
+            <a th:href="@{/patent/dossier/{number}(number=${spa.applicationNumber})}" target="_blank" th:text="${spa.applicationNumber + (spaStat.last ? '' : ',')}"/>
+        </th:block>
+    </th:block>
+</div>
+    
+
+
+<div th:text="#{patent.details.bibliographic-data}"/>
+
+<table class="datablock">
+    <caption><span th:text="#{patent.details.ipc}"/></caption>
+    <th:block th:each="ipc: ${dossier.patent == null ? dossier.ipc : dossier.patent.ipc}">
+        <tr>
+            <td class="num"><span th:if="${ipcStat.index == 0}">(51)</span></td>
+            <td style="width: 60%;"><strong th:if="${ipcStat.index == 0}">INT.CL.</strong></td>
+            <th:block th:if="${ipc.version != null}">
+                <td class="value-italic" th:text="${ipc.code}"/>
+                <td class="value-italic" th:text="${ipc.version}"/>
+            </th:block>
+            <th:block th:unless="${ipc.version != null}">
+                <td class="value-em" th:text="${ipc.code}"/>
+                <td class="value-em" th:text="${ipc.version}"/>
+            </th:block>
+        </tr>
+    </th:block>
+</table>
+
+<table class="datablock">
+    <caption><span th:text="#{patent.eu.details.patent}"/></caption>
+    <tr>
+        <td class="num">(11)</td>
+        <td class="var"><span th:text="#{patent.details.number}"/></td>
+        <td class="val"><span th:text="${dossier.number}"/></td>
+    </tr>
+    <tr>
+        <td class="num">(13)</td>
+        <td class="var"><span th:text="#{patent.details.document-type}"/></td>
+        <td class="val">T</td>
+    </tr>
+
+    <th:block th:if="${dossier.epData != null}">
+        <tr>
+            <td class="num">(96)</td>
+            <td class="var" th:text="#{patent.eu.details.f96.number}"/>
+            <td class="val"><span th:text="${dossier.epData.applicationNumber}"/></td>
+        </tr>
+        <tr>
+            <td class="num"></td>
+            <td class="var" th:text="#{patent.eu.details.f96.date}"/>
+            <td class="val"><span th:if="${dossier.epData.applicationDate != null}" th:text="${#temporals.format(dossier.epData.applicationDate, dateFormat)}"/></td>
+        </tr>
+        <tr>
+            <td class="num">(97)</td>
+            <td class="var" th:text="#{patent.eu.details.f97.date}"/>
+            <td class="val"><span th:if="${dossier.epData.applicationPubDate != null}" th:text="${#temporals.format(dossier.epData.applicationPubDate, dateFormat)}"/></td>
+        </tr>
+    </th:block>
+
+    <tr>
+        <td class="num">(45)</td>
+        <td class="var"><span th:text="#{patent.eu.details.f45}"/></td>
+        <td class="val">
+            <span th:if="${dossier.euPatentIssuancePublicationDate != null}"
+                  th:text="${#temporals.format(dossier.euPatentIssuancePublicationDate, dateFormat)}"/>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="num">(46)</td>
+        <td class="var"><span th:text="#{patent.eu.details.f46}"/></td>
+        <td class="val">
+            <span th:if="${dossier.f46Date != null}"
+                  th:text="${#temporals.format(dossier.f46Date, dateFormat)}"/>
+        </td>
+    </tr>
+
+</table>
+
+<th:block th:each="pctData: ${dossier.pctData}">
+    <table class="datablock">
+        <caption th:text="#{patent.details.pctapplication}"/>
+        <tr>
+            <td class="num">(86)</td>
+            <td class="var" th:text="#{patent.details.common.number}"/>
+            <td class="val"><span th:text="${pctData.applicationNumber}"/></td>
+        </tr>
+        <tr>
+            <td class="num"></td>
+            <td class="var" th:text="#{patent.details.common.date}"/>
+            <td class="val"><span th:if="${pctData.applicationDate != null}" th:text="${#temporals.format(pctData.applicationDate, dateFormat)}"/></td>
+        </tr>
+    </table>
+
+    <th:block th:if="${pctData.applicationPubNumber != null}">
+        <table class="datablock">
+            <caption th:text="#{patent.details.pctpublication}"/>
+            <tr>
+                <td class="num">(87)</td>
+                <td class="var" th:text="#{patent.details.common.number}"/>
+                <td class="val"><span th:text="${pctData.applicationPubNumber}"/></td>
+            </tr>
+            <tr>
+                <td class="num"></td>
+                <td class="var" th:text="#{patent.details.common.date}"/>
+                <td class="val"><span th:if="${pctData.applicationPubDate != null}" th:text="${#temporals.format(pctData.applicationPubDate, dateFormat)}"/></td>
+            </tr>
+        </table>
+    </th:block>
+</th:block>
+
+<table class="datablock" th:if="${dossier.priorities != null && dossier.priorities.size() > 0}">
+    <caption th:text="#{patent.details.priority}"/>
+        <tr>
+            <td class="num">(30)</td>
+            <td width="25%" class="dashed-under" th:text="#{patent.details.priority.number}"/>
+            <td width="25%" class="dashed-under" th:text="#{patent.details.priority.date}"/>
+            <td class="dashed-under" th:text="#{patent.details.priority.country}"/>
+    </tr>
+    <th:block th:each="priority: ${dossier.priorities}">
+        <tr>
+            <td></td>
+            <td class="value" th:text="${priority.number}"/>
+            <td>
+                <span th:if="${priority.date != null}" th:text="${#temporals.format(priority.date, dateFormat)}"/>
+            </td>
+            <td class="value" th:text="${priority.countryCode}"/>
+            </td>
+        </tr>
+    </th:block>
+</table>
+
+
+<table class="datablock">
+    <caption><span th:text="#{patent.details.inventor}"/></caption>
+    <tr>
+        <td class="num">(72)</td>
+        <td class="val">
+            <th:block th:each="person: ${dossier.inventors}">
+                <div th:switch="${person.freeformName}">
+                    <span th:case="null" th:text="#{patent.eu.person.unavailable}"></span>
+                    <span th:case="''" th:text="#{patent.eu.person.unavailable}"></span>
+                    <span th:case="'The designation of the inventor has not yet been filed'" th:text="#{patent.eu.person.unavailable}"></span>
+                    <span th:case="'Kiti išradėjai sutiko būti nenurodyti'" th:text="#{patent.eu.person.unavailable}"></span>
+                    <span th:case="*" th:inline="text">[[|${person.freeformName}, ${person.country}|]] <span th:if="${person.sanctionsApplied}" style="color: red" th:text="#{person.sanctioned}"/><br/></span>
+                </div>
+            </th:block>
+        </td>
+    </tr>
+</table>
+
+<table class="datablock">
+    <caption><span th:text="#{patent.details.owner}"/></caption>
+    <tr>
+        <td class="num">(73)</td>
+        <td class="val">
+            <th:block th:each="person: ${dossier.owners}">
+                <span th:text="${person.freeformName}"/>,
+                <span th:text="${person.freeformAddress}"/>,
+                <span th:text="${person.country}"/>
+                <span th:if="${person.sanctionsApplied}" style="color: red" th:text="#{person.sanctioned}"/><br/>
+            </th:block>
+        </td>
+    </tr>
+</table>
+
+<th:block th:if="${dossier.patent != null}">
+<table class="datablock">
+    <caption><span th:text="#{patent.details.representative}"/></caption>
+    <tr>
+        <td class="num">(74)</td>
+        <td class="val">
+            <th:block th:each="person: ${dossier.patent.representatives}">
+                <span th:text="${person.freeformName}"/>,
+                <span th:text="${person.freeformAddress}"/>,
+                <span th:text="${person.country}"/>
+                <span th:if="${person.sanctionsApplied}" style="color: red" th:text="#{person.sanctioned}"/><br/>
+            </th:block>
+        </td>
+    </tr>
+</table>
+</th:block>
+
+<table class="datablock">
+    <caption><span th:text="#{patent.details.title}"/></caption>
+    <tr>
+        <td class="num">(54)</td>
+        <td th:if="${dossier.patent != null}" class="val" th:text="${dossier.patent.titleLt}"/>
+        <td th:if="${dossier.patent == null}" class="val" th:text="${dossier.titleLt}"/>
+    </tr>
+    <tr>
+        <td class="num">&nbsp;</td>
+        <td th:if="${dossier.patent != null}" class="val" th:text="${dossier.patent.titleEn}"/>
+        <td th:if="${dossier.patent == null}" class="val" th:text="${dossier.titleEn}"/>
+    </tr>
+</table>
+
+<th:block th:if="${dossier.patent != null && dossier.patent.lastFeeDate != null}">
+    <table class="datablock">
+        <caption th:text="#{patent.details.lastrenewalfee}"/>
+        <tr>
+            <td class="num"></td>
+            <td width="33%" style="border-bottom: 1px dashed #708090;"><span th:text="#{patent.details.lastrenewalfee.date}"/></td>
+            <td width="40%" style="border-bottom: 1px dashed #708090;"><span th:text="#{patent.details.lastrenewalfee.validity}"/></td>
+            <td  style="border-bottom: 1px dashed #708090;"><span th:text="#{patent.details.lastrenewalfee.amount}"/></td>
+        </tr>
+        <tr>
+            <td class="num"/>
+            <td class="value" th:text="${#temporals.format(dossier.patent.lastFeeDate, dateFormat)}"/>
+            <td class="value" th:text="${dossier.patent.lastFeeValidityYears}"/>
+            <td class="value">
+                <span th:text="${#numbers.formatDecimal(dossier.patent.lastFeeAmount / 100.00, 0, 'NONE', 2, 'POINT')}"/>
+                <span th:text="${dossier.patent.lastFeeCurrency}"/>
+            </td>
+        </tr>
+    </table>
+
+    <table class="datablock" th:if="${dossier.patent.nextFeeDate != null && dossier.showNextFee}">
+        <caption th:text="#{patent.details.nextrenewalfee}"/>
+        <tr>
+            <td class="num"/>
+            <td class="value" th:text="${#temporals.format(dossier.patent.nextFeeDate, dateFormat)}"/>
+        </tr>
+    </table>
+</th:block>
+
+<table class="datablock" th:if="${dossier.invalidationDate != null && !dossier.showNextFee}">
+    <caption><span th:text="#{patent.details.status}"/></caption>
+    <tr>
+        <td class="num"></td>
+        <td class="value dashed-under">
+            <th:block th:if="${dossier.patent != null}">
+                <span th:if="${#locale.language == 'en'}" th:text="${dossier.patent.statusEn}"/>
+                <span th:if="${#locale.language == 'lt'}" th:text="${dossier.patent.statusLt}"/>
+            </th:block>
+            <th:block th:if="${dossier.patent == null}">
+                <span th:if="${#locale.language == 'en'}" th:text="${dossier.statusEn}"/>
+                <span th:if="${#locale.language == 'lt'}" th:text="${dossier.statusLt}"/>
+            </th:block>
+        </td>
+        <td class="var"></td>
+    </tr>
+    <tr>
+        <td class="num"></td>
+        <td class="var"><span th:text="#{patent.details.invalidation.date}"/></td>
+        <td class="val"><span th:text="${#temporals.format(dossier.invalidationDate, dateFormat)}"/></td>
+    </tr>
+</table>
+
+
+<div class="footer">
+
+    <!-- close -->
+    <table width="100%">
+        <tr>
+            <td align=right valign=top width="98%"><span th:text="#{patent.details.updateddate}"/> <span th:text="${#temporals.format(dossier.patent != null ? dossier.patent.updatedDate : dossier.updatedDate, dateFormat)}"/></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
